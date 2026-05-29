@@ -7,49 +7,99 @@ import Link from "next/link"
 
 function IllustrationContract() {
   return (
-    <svg viewBox="0 0 320 380" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-      {/* Document shadow */}
-      <rect x="30" y="28" width="240" height="310" rx="16" fill="#E8E0D4" />
-      {/* Document body */}
-      <rect x="20" y="16" width="240" height="310" rx="16" fill="#FFFCF7" stroke="#E8E0D4" strokeWidth="1.5" />
-      {/* Header bar */}
-      <rect x="20" y="16" width="240" height="52" rx="16" fill="#7DD3C0" />
-      <rect x="20" y="44" width="240" height="24" fill="#7DD3C0" />
-      {/* Logo mark on header */}
-      <rect x="40" y="30" width="24" height="24" rx="6" fill="white" fillOpacity="0.3" />
-      <path d="M46 42h12M46 46h8" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
-      {/* Header text lines */}
-      <rect x="74" y="33" width="80" height="7" rx="3.5" fill="white" fillOpacity="0.6" />
-      <rect x="74" y="44" width="50" height="5" rx="2.5" fill="white" fillOpacity="0.4" />
-      {/* Content lines */}
-      <rect x="40" y="84" width="180" height="7" rx="3.5" fill="#D4CDC4" />
-      <rect x="40" y="98" width="160" height="7" rx="3.5" fill="#D4CDC4" />
-      <rect x="40" y="112" width="140" height="7" rx="3.5" fill="#D4CDC4" />
-      {/* Section divider */}
-      <rect x="40" y="132" width="180" height="1" fill="#E8E0D4" />
-      {/* Clause blocks */}
-      <rect x="40" y="144" width="60" height="6" rx="3" fill="#FF8A65" fillOpacity="0.6" />
-      <rect x="40" y="156" width="180" height="5" rx="2.5" fill="#D4CDC4" />
-      <rect x="40" y="166" width="150" height="5" rx="2.5" fill="#D4CDC4" />
-      <rect x="40" y="176" width="165" height="5" rx="2.5" fill="#D4CDC4" />
-      {/* Second clause */}
-      <rect x="40" y="196" width="60" height="6" rx="3" fill="#FFD54F" fillOpacity="0.8" />
-      <rect x="40" y="208" width="180" height="5" rx="2.5" fill="#D4CDC4" />
-      <rect x="40" y="218" width="130" height="5" rx="2.5" fill="#D4CDC4" />
-      {/* Signature zone */}
-      <rect x="40" y="244" width="180" height="50" rx="10" fill="#F5F0E8" stroke="#E8E0D4" strokeWidth="1" strokeDasharray="4 3" />
-      <path d="M60 275 Q80 260 100 270 Q120 280 140 265" stroke="#7DD3C0" strokeWidth="2" strokeLinecap="round" fill="none" />
-      <rect x="60" y="282" width="60" height="3" rx="1.5" fill="#D4CDC4" />
-      {/* Check badge */}
-      <circle cx="220" cy="270" r="18" fill="#7DD3C0" />
-      <path d="M212 270 l5 5 l10 -10" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-      {/* Chain links decoration */}
-      <g transform="translate(230, 140)">
-        <circle cx="8" cy="8" r="7" stroke="#FFD54F" strokeWidth="2" fill="none" />
-        <circle cx="20" cy="8" r="7" stroke="#FFD54F" strokeWidth="2" fill="none" />
-        <rect x="8" y="5" width="12" height="6" fill="#FFFCF7" />
-      </g>
-    </svg>
+    <div className="relative w-full max-w-sm">
+      {/* Shadow layer */}
+      <div className="absolute inset-0 translate-x-3 translate-y-3 bg-[#E8E0D4] rounded-2xl" />
+
+      {/* Main contract document */}
+      <div className="relative bg-white rounded-2xl border border-[#E5E0D8] shadow-lg overflow-hidden">
+        {/* Header */}
+        <div className="bg-[#7DD3C0] px-5 py-4">
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 bg-white/30 rounded-lg flex items-center justify-center">
+              <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+            </div>
+            <div>
+              <div className="text-white font-semibold text-sm">Influencer Agreement</div>
+              <div className="text-white/70 text-xs">ID: CG-2026-0847</div>
+            </div>
+          </div>
+        </div>
+
+        {/* Content */}
+        <div className="p-5 space-y-4 text-xs">
+          {/* Parties */}
+          <div>
+            <div className="text-[#7DD3C0] font-semibold text-[10px] uppercase tracking-wider mb-2">Стороны</div>
+            <div className="space-y-1.5">
+              <div className="flex justify-between">
+                <span className="text-gray-500">Бренд:</span>
+                <span className="font-medium text-gray-800">Nike Inc.</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-gray-500">Креатор:</span>
+                <span className="font-medium text-gray-800">@fitness_anna</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="border-t border-dashed border-gray-200" />
+
+          {/* Terms */}
+          <div>
+            <div className="text-[#FFB347] font-semibold text-[10px] uppercase tracking-wider mb-2">Условия</div>
+            <div className="space-y-1.5">
+              <div className="flex justify-between">
+                <span className="text-gray-500">Гонорар:</span>
+                <span className="font-bold text-[#7DD3C0]">$3,500</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-gray-500">Контент:</span>
+                <span className="font-medium text-gray-800">3 Reels + Stories</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-gray-500">Дедлайн:</span>
+                <span className="font-medium text-gray-800">15 июня 2026</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="border-t border-dashed border-gray-200" />
+
+          {/* Signature */}
+          <div>
+            <div className="text-gray-400 font-semibold text-[10px] uppercase tracking-wider mb-2">Подпись</div>
+            <div className="bg-[#F8F5F0] rounded-lg p-3 border border-dashed border-[#E5E0D8]">
+              <svg viewBox="0 0 120 30" className="w-24 h-6">
+                <path
+                  d="M5 20 Q15 5 25 18 Q35 28 45 15 Q55 5 65 20 Q75 30 85 12 L95 18"
+                  stroke="#7DD3C0"
+                  strokeWidth="2"
+                  fill="none"
+                  strokeLinecap="round"
+                />
+              </svg>
+              <div className="text-[10px] text-gray-400 mt-1">Anna Petrova • 28 мая 2026</div>
+            </div>
+          </div>
+        </div>
+
+        {/* Footer badge */}
+        <div className="absolute -bottom-3 -right-3 w-14 h-14 bg-[#7DD3C0] rounded-full flex items-center justify-center shadow-lg border-4 border-white">
+          <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+          </svg>
+        </div>
+      </div>
+
+      {/* Floating price tag */}
+      <div className="absolute -bottom-2 -left-2 bg-gradient-to-r from-orange-400 to-orange-500 text-white px-3 py-1.5 rounded-full text-xs font-bold shadow-lg flex items-center gap-1.5">
+        <span className="text-orange-200">💰</span>
+        $3,500 / бренд
+      </div>
+    </div>
   )
 }
 

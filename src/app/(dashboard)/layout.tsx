@@ -6,6 +6,9 @@ import { usePathname, useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { useAppStore } from "@/lib/store"
 import { useUsageStore, getPlanName } from "@/lib/usage-store"
+import { ThemeToggle } from "@/components/ThemeToggle"
+import { MobileNav } from "@/components/MobileNav"
+import { MobileHeader } from "@/components/MobileHeader"
 
 const navigation = [
   { name: "Dashboard", href: "/dashboard", icon: <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg> },
@@ -24,18 +27,35 @@ const navigation = [
   { name: "Workflows", href: "/dashboard/workflows", icon: <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg> },
 ]
 
-const bottomNav = [
-  {
-    name: "Settings",
-    href: "/dashboard/settings",
-    icon: (
-      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-      </svg>
-    ),
-  },
-  {
+// Function to get bottom nav items based on user plan
+const getBottomNav = (userPlan?: string) => {
+  const items = [
+    {
+      name: "Settings",
+      href: "/dashboard/settings",
+      icon: (
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+      ),
+    },
+  ]
+
+  // Add Branding link for Agency plan users
+  if (userPlan === 'agency') {
+    items.push({
+      name: "Branding",
+      href: "/dashboard/settings/branding",
+      icon: (
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+        </svg>
+      ),
+    })
+  }
+
+  items.push({
     name: "Help",
     href: "/dashboard/help",
     icon: (
@@ -43,8 +63,10 @@ const bottomNav = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
       </svg>
     ),
-  },
-]
+  })
+
+  return items
+}
 
 export default function DashboardLayout({
   children,
@@ -74,10 +96,10 @@ export default function DashboardLayout({
 
   if (isLoading && !user) {
     return (
-      <div className="min-h-screen bg-[#FDF9F3] flex items-center justify-center">
+      <div className="min-h-screen bg-[#FDF9F3] dark:bg-gray-950 flex items-center justify-center">
         <div className="text-center">
           <div className="w-8 h-8 border-2 border-violet-500 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
-          <p className="text-gray-500">Loading...</p>
+          <p className="text-gray-500 dark:text-gray-400">Loading...</p>
         </div>
       </div>
     )
@@ -89,37 +111,14 @@ export default function DashboardLayout({
   }
 
   return (
-    <div className="min-h-screen bg-[#FDF9F3] text-gray-900 flex">
+    <div className="min-h-screen bg-[#FDF9F3] dark:bg-gray-950 text-gray-900 dark:text-gray-100 flex transition-colors">
       {/* Subtle background pattern */}
-      <div className="fixed inset-0 bg-[linear-gradient(rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:64px_64px] pointer-events-none" />
+      <div className="fixed inset-0 bg-[linear-gradient(rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.02)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:64px_64px] pointer-events-none" />
 
-      {/* Mobile Header */}
-      <div className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-xl border-b border-[#E5E0D8] px-4 h-14 flex items-center justify-between">
-        <Link href="/dashboard" className="flex items-center gap-2.5">
-          <div className="w-8 h-8 bg-gradient-to-br from-violet-500 to-fuchsia-500 rounded-lg flex items-center justify-center">
-            <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-            </svg>
-          </div>
-          <span className="font-semibold text-[15px] text-gray-900">ContractGen</span>
-        </Link>
-        <button
-          onClick={() => setSidebarOpen(!sidebarOpen)}
-          className="p-2 text-gray-500 hover:text-gray-900 rounded-lg hover:bg-gray-100 transition-colors"
-        >
-          {sidebarOpen ? (
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          ) : (
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          )}
-        </button>
-      </div>
+      {/* Mobile Header - uses new component */}
+      <MobileHeader />
 
-      {/* Mobile Overlay */}
+      {/* Mobile Overlay - for desktop sidebar toggle */}
       {sidebarOpen && (
         <div
           className="lg:hidden fixed inset-0 z-40 bg-black/60 backdrop-blur-sm"
@@ -130,21 +129,24 @@ export default function DashboardLayout({
       {/* Sidebar */}
       <aside className={`
         fixed lg:static inset-y-0 left-0 z-50
-        w-64 border-r border-[#E5E0D8] flex flex-col bg-white
+        w-64 border-r border-[#E5E0D8] dark:border-gray-800 flex flex-col bg-white dark:bg-gray-900
         transform transition-transform duration-300 ease-out
         ${sidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
         lg:transform-none
       `}>
         {/* Logo */}
-        <div className="h-16 px-6 flex items-center border-b border-[#E5E0D8]">
+        <div className="h-16 px-6 flex items-center justify-between border-b border-[#E5E0D8] dark:border-gray-800">
           <Link href="/dashboard" className="flex items-center gap-2.5 group">
             <div className="w-8 h-8 bg-gradient-to-br from-violet-500 to-fuchsia-500 rounded-lg flex items-center justify-center transition-transform group-hover:scale-105">
               <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
               </svg>
             </div>
-            <span className="font-semibold text-[15px] tracking-tight text-gray-900">ContractGen</span>
+            <span className="font-semibold text-[15px] tracking-tight text-gray-900 dark:text-gray-100">ContractGen</span>
           </Link>
+          <div className="hidden lg:block">
+            <ThemeToggle />
+          </div>
         </div>
 
         {/* New Contract Button */}
@@ -188,8 +190,8 @@ export default function DashboardLayout({
 
         {/* Bottom Navigation */}
         <div className="px-3 py-2 border-t border-[#E5E0D8]">
-          {bottomNav.map((item) => {
-            const isActive = pathname === item.href
+          {getBottomNav(user?.plan).map((item) => {
+            const isActive = pathname === item.href || pathname.startsWith(item.href + '/')
             return (
               <Link
                 key={item.name}
@@ -275,9 +277,12 @@ export default function DashboardLayout({
       </aside>
 
       {/* Main Content */}
-      <main className="relative flex-1 overflow-auto pt-14 lg:pt-0">
+      <main className="relative flex-1 overflow-auto pt-14 lg:pt-0 pb-20 lg:pb-0">
         {children}
       </main>
+
+      {/* Mobile Bottom Navigation */}
+      <MobileNav />
     </div>
   )
 }

@@ -137,15 +137,15 @@ export default function ContractsPage() {
   }
 
   return (
-    <div className="p-8">
+    <div className="p-4 sm:p-6 lg:p-8">
       {/* Header */}
-      <div className="flex items-center justify-between mb-8">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 lg:mb-8">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900 mb-1">Contracts</h1>
-          <p className="text-gray-500">Manage and track all your influencer contracts</p>
+          <h1 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-1">Contracts</h1>
+          <p className="text-sm text-gray-500 dark:text-gray-400">Manage and track all your influencer contracts</p>
         </div>
-        <Link href="/dashboard/contracts/new">
-          <Button className="bg-gradient-to-r from-purple-500 to-fuchsia-500 hover:from-purple-600 hover:to-fuchsia-600">
+        <Link href="/dashboard/contracts/new" className="hidden sm:block">
+          <Button className="bg-gradient-to-r from-purple-500 to-fuchsia-500 hover:from-purple-600 hover:to-fuchsia-600 h-10">
             <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
             </svg>
@@ -154,22 +154,47 @@ export default function ContractsPage() {
         </Link>
       </div>
 
-      {/* Filters & Search */}
-      <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 mb-6">
+      {/* Search - Mobile first */}
+      <div className="mb-4 lg:hidden">
+        <div className="relative">
+          <svg
+            className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+          <Input
+            placeholder="Search contracts..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="pl-9 w-full h-11 bg-white dark:bg-gray-800 border-[#E5E0D8] dark:border-gray-700 rounded-xl"
+          />
+        </div>
+      </div>
+
+      {/* Filters - Scrollable on mobile */}
+      <div className="flex gap-2 mb-4 lg:mb-6 overflow-x-auto pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-hide">
+        {filters.map((filter) => (
+          <button
+            key={filter}
+            onClick={() => setActiveFilter(filter)}
+            className={`px-4 py-2.5 rounded-xl text-sm font-medium transition-colors whitespace-nowrap min-h-[44px] ${
+              activeFilter === filter
+                ? "bg-violet-100 dark:bg-violet-900/30 text-violet-700 dark:text-violet-400"
+                : "bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 active:bg-gray-200"
+            }`}
+          >
+            {filter}
+          </button>
+        ))}
+      </div>
+
+      {/* Desktop: Filters & Search */}
+      <div className="hidden lg:flex items-center justify-between gap-4 mb-6">
         <div className="flex gap-2">
-          {filters.map((filter) => (
-            <button
-              key={filter}
-              onClick={() => setActiveFilter(filter)}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                activeFilter === filter
-                  ? "bg-violet-100 text-violet-700"
-                  : "bg-gray-100 text-gray-600 hover:text-gray-900 hover:bg-gray-200"
-              }`}
-            >
-              {filter}
-            </button>
-          ))}
+          {/* Already shown above for all screens */}
         </div>
 
         <div className="flex items-center gap-3">
@@ -189,7 +214,7 @@ export default function ContractsPage() {
               className="pl-9 w-64 bg-white border-[#E5E0D8]"
             />
           </div>
-          <Button variant="outline" className="border-[#E5E0D8] text-gray-600 hover:bg-gray-50">
+          <Button variant="outline" className="border-[#E5E0D8] text-gray-600 hover:bg-gray-50 h-10">
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
             </svg>
@@ -197,51 +222,113 @@ export default function ContractsPage() {
         </div>
       </div>
 
-      {/* Contracts Table */}
-      <Card className="bg-white border border-[#E5E0D8] shadow-sm">
+      {/* Mobile Cards View */}
+      <div className="lg:hidden space-y-3">
+        {filteredContracts.map((contract) => {
+          const status = statusColors[contract.status as keyof typeof statusColors] || statusColors.draft
+          return (
+            <Link
+              key={contract.id}
+              href={`/dashboard/contracts/${contract.id}`}
+              className="block"
+            >
+              <Card className="bg-white dark:bg-gray-800 border-[#E5E0D8] dark:border-gray-700 hover:border-violet-300 dark:hover:border-violet-700 transition-all active:scale-[0.99] rounded-xl overflow-hidden">
+                <CardContent className="p-4">
+                  <div className="flex items-start gap-3">
+                    <div className="w-11 h-11 rounded-xl bg-violet-100 dark:bg-violet-900/30 flex items-center justify-center flex-shrink-0">
+                      <svg className="w-5 h-5 text-violet-600 dark:text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                      </svg>
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center justify-between gap-2 mb-1">
+                        <h3 className="font-semibold text-gray-900 dark:text-white truncate">{contract.title}</h3>
+                        <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium flex-shrink-0 ${status.bg} ${status.text}`}>
+                          {status.label}
+                        </span>
+                      </div>
+                      <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">{contract.brand}</p>
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-3 text-sm">
+                          <span className="font-semibold text-gray-900 dark:text-white">{contract.amount}</span>
+                          <span className="text-gray-400">|</span>
+                          <span className="text-gray-500 dark:text-gray-400">{contract.type}</span>
+                        </div>
+                        <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </Link>
+          )
+        })}
+
+        {filteredContracts.length === 0 && (
+          <div className="text-center py-12 px-4">
+            <div className="w-16 h-16 rounded-2xl bg-gray-100 dark:bg-gray-800 flex items-center justify-center mx-auto mb-4">
+              <svg className="w-8 h-8 text-gray-300 dark:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+            </div>
+            <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">No contracts found</h3>
+            <p className="text-gray-500 dark:text-gray-400 mb-4">Try adjusting your search or filter</p>
+            <Link href="/dashboard/contracts/new">
+              <Button className="bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-500 hover:to-fuchsia-500 h-11 px-6">
+                Create your first contract
+              </Button>
+            </Link>
+          </div>
+        )}
+      </div>
+
+      {/* Desktop Table View */}
+      <Card className="hidden lg:block bg-white dark:bg-gray-800 border border-[#E5E0D8] dark:border-gray-700 shadow-sm rounded-xl overflow-hidden">
         <CardContent className="p-0">
           <table className="w-full">
             <thead>
-              <tr className="border-b border-[#E5E0D8]">
-                <th className="text-left text-xs font-medium text-gray-500 uppercase tracking-wider px-6 py-4">
+              <tr className="border-b border-[#E5E0D8] dark:border-gray-700">
+                <th className="text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider px-6 py-4">
                   Contract
                 </th>
-                <th className="text-left text-xs font-medium text-gray-500 uppercase tracking-wider px-6 py-4">
+                <th className="text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider px-6 py-4">
                   Type
                 </th>
-                <th className="text-left text-xs font-medium text-gray-500 uppercase tracking-wider px-6 py-4">
+                <th className="text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider px-6 py-4">
                   Status
                 </th>
-                <th className="text-left text-xs font-medium text-gray-500 uppercase tracking-wider px-6 py-4">
+                <th className="text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider px-6 py-4">
                   Amount
                 </th>
-                <th className="text-left text-xs font-medium text-gray-500 uppercase tracking-wider px-6 py-4">
+                <th className="text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider px-6 py-4">
                   Date
                 </th>
-                <th className="text-right text-xs font-medium text-gray-500 uppercase tracking-wider px-6 py-4">
+                <th className="text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider px-6 py-4">
                   Actions
                 </th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#E5E0D8]">
+            <tbody className="divide-y divide-[#E5E0D8] dark:divide-gray-700">
               {filteredContracts.map((contract) => {
                 const status = statusColors[contract.status as keyof typeof statusColors] || statusColors.draft
                 return (
-                  <tr key={contract.id} className="hover:bg-[#FDF9F3] transition-colors">
+                  <tr key={contract.id} className="hover:bg-[#FDF9F3] dark:hover:bg-gray-700/50 transition-colors">
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-lg bg-violet-100 flex items-center justify-center">
-                          <svg className="w-5 h-5 text-violet-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div className="w-10 h-10 rounded-lg bg-violet-100 dark:bg-violet-900/30 flex items-center justify-center">
+                          <svg className="w-5 h-5 text-violet-600 dark:text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                           </svg>
                         </div>
                         <div>
-                          <div className="font-medium text-gray-900">{contract.title}</div>
-                          <div className="text-sm text-gray-500">{contract.brand}</div>
+                          <div className="font-medium text-gray-900 dark:text-white">{contract.title}</div>
+                          <div className="text-sm text-gray-500 dark:text-gray-400">{contract.brand}</div>
                         </div>
                       </div>
                     </td>
-                    <td className="px-6 py-4 text-sm text-gray-600">
+                    <td className="px-6 py-4 text-sm text-gray-600 dark:text-gray-300">
                       {contract.type}
                     </td>
                     <td className="px-6 py-4">
@@ -249,20 +336,20 @@ export default function ContractsPage() {
                         {status.label}
                       </span>
                     </td>
-                    <td className="px-6 py-4 font-medium text-gray-900">
+                    <td className="px-6 py-4 font-medium text-gray-900 dark:text-white">
                       {contract.amount}
                     </td>
-                    <td className="px-6 py-4 text-sm text-gray-500">
+                    <td className="px-6 py-4 text-sm text-gray-500 dark:text-gray-400">
                       {contract.signedDate || contract.created}
                     </td>
                     <td className="px-6 py-4 text-right">
                       <div className="flex items-center justify-end gap-2">
                         <Link href={`/dashboard/contracts/${contract.id}`}>
-                          <Button variant="ghost" size="sm" className="text-gray-600 hover:text-violet-600">
+                          <Button variant="ghost" size="sm" className="text-gray-600 dark:text-gray-300 hover:text-violet-600">
                             View
                           </Button>
                         </Link>
-                        <Button variant="ghost" size="sm" className="text-gray-400 hover:text-gray-600 p-2">
+                        <Button variant="ghost" size="sm" className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 p-2">
                           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
                           </svg>
@@ -277,11 +364,11 @@ export default function ContractsPage() {
 
           {filteredContracts.length === 0 && (
             <div className="text-center py-12">
-              <svg className="w-12 h-12 text-gray-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-12 h-12 text-gray-300 dark:text-gray-600 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
               </svg>
-              <h3 className="text-lg font-medium text-gray-600 mb-2">No contracts found</h3>
-              <p className="text-gray-500 mb-4">Try adjusting your search or filter</p>
+              <h3 className="text-lg font-medium text-gray-600 dark:text-gray-300 mb-2">No contracts found</h3>
+              <p className="text-gray-500 dark:text-gray-400 mb-4">Try adjusting your search or filter</p>
               <Link href="/dashboard/contracts/new">
                 <Button className="bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-500 hover:to-fuchsia-500">
                   Create your first contract

@@ -3,6 +3,7 @@ import { Fraunces, Inter } from "next/font/google";
 import "./globals.css";
 import { CookieConsent } from "@/components/CookieConsent";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
+import { ThemeProvider } from "@/components/ThemeProvider";
 
 const fraunces = Fraunces({
   variable: "--font-fraunces",
@@ -37,12 +38,20 @@ export default function RootLayout({
     <html
       lang="ru"
       className={`${fraunces.variable} ${inter.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col">
-        <ErrorBoundary>
-          {children}
-        </ErrorBoundary>
-        <CookieConsent />
+      <body className="min-h-full flex flex-col bg-[#FDF9F3] dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <ErrorBoundary>
+            {children}
+          </ErrorBoundary>
+          <CookieConsent />
+        </ThemeProvider>
       </body>
     </html>
   );

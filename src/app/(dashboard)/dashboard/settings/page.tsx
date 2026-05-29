@@ -331,6 +331,36 @@ export default function SettingsPage() {
         </CardContent>
       </Card>
 
+      {/* White-Label Branding (Agency only) */}
+      {user?.plan === 'agency' && (
+        <Card className="bg-gradient-to-br from-violet-50 to-fuchsia-50 dark:from-violet-950/30 dark:to-fuchsia-950/30 border-violet-200 dark:border-violet-800 mb-6">
+          <CardContent className="p-6">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-violet-500 to-fuchsia-500 flex items-center justify-center">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+                  </svg>
+                </div>
+                <div>
+                  <h2 className="font-semibold text-gray-900 dark:text-gray-100">White-Label Branding</h2>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">Customize contracts and emails with your brand</p>
+                </div>
+              </div>
+              <Button
+                onClick={() => router.push('/dashboard/settings/branding')}
+                className="bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-500 hover:to-fuchsia-500"
+              >
+                <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                </svg>
+                Customize
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+      )}
+
       {/* Integrations */}
       <Card className="bg-white border-[#E5E0D8] mb-6">
         <CardContent className="p-6">

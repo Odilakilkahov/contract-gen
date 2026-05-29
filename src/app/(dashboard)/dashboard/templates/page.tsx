@@ -40,16 +40,16 @@ export default function TemplatesPage() {
   }
 
   return (
-    <div className="p-8">
+    <div className="p-4 sm:p-6 lg:p-8">
       {/* Header */}
-      <div className="flex items-center justify-between mb-8">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 lg:mb-8">
         <div>
-          <h1 className="text-2xl font-bold mb-1">Contract Templates</h1>
-          <p className="text-gray-500">Choose from 15+ professionally crafted templates</p>
+          <h1 className="text-xl sm:text-2xl font-bold mb-1 text-gray-900 dark:text-white">Contract Templates</h1>
+          <p className="text-sm text-gray-500 dark:text-gray-400">Choose from 15+ professionally crafted templates</p>
         </div>
         <Button
           variant="outline"
-          className="border-[#E5E0D8] text-gray-700"
+          className="border-[#E5E0D8] dark:border-gray-700 text-gray-700 dark:text-gray-300 h-10 hidden sm:flex"
           onClick={handleCreateTemplate}
         >
           <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -59,16 +59,16 @@ export default function TemplatesPage() {
         </Button>
       </div>
 
-      {/* Category Tabs */}
-      <div className="flex gap-2 mb-6 overflow-x-auto pb-2">
+      {/* Category Tabs - Scrollable on mobile */}
+      <div className="flex gap-2 mb-4 lg:mb-6 overflow-x-auto pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-hide">
         {categories.map((cat) => (
           <button
             key={cat.id}
             onClick={() => setSelectedCategory(cat.id)}
-            className={`px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap transition-colors ${
+            className={`px-4 py-2.5 rounded-xl text-sm font-medium whitespace-nowrap transition-colors min-h-[44px] ${
               selectedCategory === cat.id
-                ? "bg-violet-100 text-violet-700"
-                : "bg-gray-100 text-gray-500 hover:text-gray-900 hover:bg-gray-200"
+                ? "bg-violet-100 dark:bg-violet-900/30 text-violet-700 dark:text-violet-400"
+                : "bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400 active:bg-gray-200"
             }`}
           >
             {cat.name}
@@ -77,54 +77,54 @@ export default function TemplatesPage() {
       </div>
 
       {/* Templates Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
         {filteredTemplates.map((template) => (
           <Card
             key={template.id}
-            className="bg-white border-[#E5E0D8] hover:border-violet-500/50 transition-all group"
+            className="bg-white dark:bg-gray-800 border-[#E5E0D8] dark:border-gray-700 hover:border-violet-500/50 dark:hover:border-violet-500/50 transition-all group rounded-xl active:scale-[0.99]"
           >
-            <CardContent className="p-6">
-              <div className="flex items-start justify-between mb-4">
-                <div className="w-12 h-12 rounded-xl bg-violet-500/10 flex items-center justify-center text-2xl">
+            <CardContent className="p-4 sm:p-6">
+              <div className="flex items-start justify-between mb-3 sm:mb-4">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-violet-500/10 dark:bg-violet-500/20 flex items-center justify-center text-xl sm:text-2xl">
                   {template.icon}
                 </div>
-                <span className="text-xs px-2 py-1 rounded-full bg-gray-100 text-gray-600 capitalize">
+                <span className="text-[10px] sm:text-xs px-2 py-1 rounded-full bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 capitalize">
                   {template.category}
                 </span>
               </div>
 
-              <h3 className="text-lg font-semibold mb-2 text-gray-900 group-hover:text-violet-600 transition-colors">
+              <h3 className="text-base sm:text-lg font-semibold mb-1.5 sm:mb-2 text-gray-900 dark:text-white group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors">
                 {template.name}
               </h3>
-              <p className="text-sm text-gray-500 mb-4">
+              <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mb-3 sm:mb-4 line-clamp-2">
                 {template.description}
               </p>
 
-              <div className="flex flex-wrap gap-1.5 mb-4">
-                {template.fields.slice(0, 4).map((field) => (
+              <div className="flex flex-wrap gap-1 sm:gap-1.5 mb-3 sm:mb-4">
+                {template.fields.slice(0, 3).map((field) => (
                   <span
                     key={field}
-                    className="text-xs px-2 py-0.5 rounded bg-gray-100 text-gray-500 capitalize"
+                    className="text-[10px] sm:text-xs px-1.5 sm:px-2 py-0.5 rounded bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400 capitalize"
                   >
                     {field.replace("_", " ")}
                   </span>
                 ))}
-                {template.fields.length > 4 && (
-                  <span className="text-xs px-2 py-0.5 rounded bg-gray-100 text-gray-500">
-                    +{template.fields.length - 4} more
+                {template.fields.length > 3 && (
+                  <span className="text-[10px] sm:text-xs px-1.5 sm:px-2 py-0.5 rounded bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400">
+                    +{template.fields.length - 3} more
                   </span>
                 )}
               </div>
 
               <div className="flex gap-2">
                 <Link href={`/dashboard/contracts/new?template=${template.id}`} className="flex-1">
-                  <Button className="w-full bg-gradient-to-r from-violet-600 to-fuchsia-500 hover:from-violet-700 hover:to-fuchsia-600">
+                  <Button className="w-full h-10 sm:h-9 bg-gradient-to-r from-violet-600 to-fuchsia-500 hover:from-violet-700 hover:to-fuchsia-600 text-sm">
                     Use Template
                   </Button>
                 </Link>
                 <Button
                   variant="outline"
-                  className="border-[#E5E0D8] text-gray-500 hover:text-gray-900"
+                  className="border-[#E5E0D8] dark:border-gray-600 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white h-10 sm:h-9 w-10 sm:w-auto px-2 sm:px-3"
                   onClick={() => setPreviewTemplate(template as Template)}
                 >
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -139,23 +139,23 @@ export default function TemplatesPage() {
       </div>
 
       {/* Pro Templates Banner */}
-      <Card className="mt-8 bg-gradient-to-r from-violet-500/10 to-fuchsia-500/10 border-violet-500/20">
-        <CardContent className="p-6 flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-xl bg-violet-500/20 flex items-center justify-center">
-              <svg className="w-6 h-6 text-violet-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <Card className="mt-6 lg:mt-8 bg-gradient-to-r from-violet-500/10 to-fuchsia-500/10 dark:from-violet-500/20 dark:to-fuchsia-500/20 border-violet-500/20 rounded-xl">
+        <CardContent className="p-4 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="flex items-center gap-3 sm:gap-4">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-violet-500/20 flex items-center justify-center flex-shrink-0">
+              <svg className="w-5 h-5 sm:w-6 sm:h-6 text-violet-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
               </svg>
             </div>
             <div>
-              <h3 className="font-semibold mb-1 text-gray-900">Unlock Pro Templates</h3>
-              <p className="text-sm text-gray-500">
+              <h3 className="font-semibold mb-0.5 sm:mb-1 text-gray-900 dark:text-white">Unlock Pro Templates</h3>
+              <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">
                 Get access to advanced templates with AI clause suggestions and custom branding
               </p>
             </div>
           </div>
-          <Link href="/dashboard/pricing">
-            <Button className="bg-violet-600 text-white hover:bg-violet-700">
+          <Link href="/dashboard/pricing" className="w-full sm:w-auto">
+            <Button className="w-full sm:w-auto h-10 bg-violet-600 text-white hover:bg-violet-700">
               Upgrade to Pro
             </Button>
           </Link>
@@ -165,26 +165,29 @@ export default function TemplatesPage() {
       {/* Preview Modal */}
       {previewTemplate && (
         <div
-          className="fixed inset-0 bg-black/50 flex items-center justify-center z-50"
+          className="fixed inset-0 bg-black/50 flex items-end sm:items-center justify-center z-50 p-0 sm:p-4"
           onClick={() => setPreviewTemplate(null)}
         >
           <div
-            className="bg-white rounded-xl p-6 max-w-2xl w-full mx-4 max-h-[80vh] overflow-auto"
+            className="bg-white dark:bg-gray-800 rounded-t-2xl sm:rounded-xl p-5 sm:p-6 w-full sm:max-w-2xl max-h-[90vh] sm:max-h-[80vh] overflow-auto"
             onClick={(e) => e.stopPropagation()}
           >
+            {/* Drag handle for mobile */}
+            <div className="w-10 h-1 bg-gray-300 dark:bg-gray-600 rounded-full mx-auto mb-4 sm:hidden" />
+
             <div className="flex items-start justify-between mb-4">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-violet-500/10 flex items-center justify-center text-xl">
+                <div className="w-10 h-10 rounded-xl bg-violet-500/10 dark:bg-violet-500/20 flex items-center justify-center text-xl">
                   {previewTemplate.icon}
                 </div>
                 <div>
-                  <h2 className="text-xl font-bold text-gray-900">{previewTemplate.name}</h2>
-                  <span className="text-sm text-gray-500 capitalize">{previewTemplate.category}</span>
+                  <h2 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">{previewTemplate.name}</h2>
+                  <span className="text-sm text-gray-500 dark:text-gray-400 capitalize">{previewTemplate.category}</span>
                 </div>
               </div>
               <button
                 onClick={() => setPreviewTemplate(null)}
-                className="text-gray-400 hover:text-gray-600"
+                className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 p-2 -mr-2 min-w-[44px] min-h-[44px] flex items-center justify-center"
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -192,15 +195,15 @@ export default function TemplatesPage() {
               </button>
             </div>
 
-            <p className="text-gray-600 mb-4">{previewTemplate.description}</p>
+            <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-4">{previewTemplate.description}</p>
 
             <div className="mb-4">
-              <h3 className="text-sm font-medium text-gray-700 mb-2">Included Fields:</h3>
-              <div className="flex flex-wrap gap-2">
+              <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Included Fields:</h3>
+              <div className="flex flex-wrap gap-1.5 sm:gap-2">
                 {previewTemplate.fields.map((field) => (
                   <span
                     key={field}
-                    className="text-sm px-3 py-1 rounded-full bg-gray-100 text-gray-600 capitalize"
+                    className="text-xs sm:text-sm px-2 sm:px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 capitalize"
                   >
                     {field.replace("_", " ")}
                   </span>
@@ -208,25 +211,25 @@ export default function TemplatesPage() {
               </div>
             </div>
 
-            <div className="bg-gray-50 p-4 rounded-lg mb-4">
-              <h3 className="text-sm font-medium text-gray-700 mb-2">Template Preview:</h3>
-              <p className="text-sm text-gray-500">
+            <div className="bg-gray-50 dark:bg-gray-700/50 p-4 rounded-xl mb-4">
+              <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Template Preview:</h3>
+              <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">
                 This template includes professionally written clauses covering all standard terms
                 for {previewTemplate.category} contracts. Fields will be auto-populated based on
                 your input during contract creation.
               </p>
             </div>
 
-            <div className="flex gap-3">
-              <Link href={`/dashboard/contracts/new?template=${previewTemplate.id}`} className="flex-1">
-                <Button className="w-full bg-gradient-to-r from-violet-600 to-fuchsia-500 hover:from-violet-700 hover:to-fuchsia-600">
+            <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
+              <Link href={`/dashboard/contracts/new?template=${previewTemplate.id}`} className="flex-1 order-1 sm:order-none">
+                <Button className="w-full h-11 sm:h-10 bg-gradient-to-r from-violet-600 to-fuchsia-500 hover:from-violet-700 hover:to-fuchsia-600">
                   Use This Template
                 </Button>
               </Link>
               <Button
                 variant="outline"
                 onClick={() => setPreviewTemplate(null)}
-                className="border-[#E5E0D8]"
+                className="border-[#E5E0D8] dark:border-gray-600 h-11 sm:h-10 order-2"
               >
                 Close
               </Button>

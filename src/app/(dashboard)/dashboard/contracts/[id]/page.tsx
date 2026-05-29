@@ -131,57 +131,39 @@ export default function ContractDetailPage({ params }: { params: Promise<{ id: s
   }
 
   const handleExportPDF = async () => {
+    if (!contract) return
     setIsExporting(true)
 
     try {
-      // Create a printable version
-      const printWindow = window.open("", "_blank")
-      if (!printWindow) {
-        alert("Please allow popups to export PDF")
-        setIsExporting(false)
-        return
+      const response = await fetch('/api/contract/pdf', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          title: contract.title,
+          brand: contract.parties?.brand || contract.brand || 'Brand',
+          creator: contract.parties?.creator || 'Creator',
+          content: contract.content,
+          value: contract.amount,
+        }),
+      })
+
+      if (!response.ok) {
+        throw new Error('PDF generation failed')
       }
 
-      printWindow.document.write(`
-        <!DOCTYPE html>
-        <html>
-        <head>
-          <title>${contract?.title || "Contract"}</title>
-          <style>
-            body {
-              font-family: 'Times New Roman', Times, serif;
-              max-width: 800px;
-              margin: 40px auto;
-              padding: 40px;
-              line-height: 1.6;
-              color: #000;
-            }
-            h1 { text-align: center; margin-bottom: 30px; }
-            pre {
-              white-space: pre-wrap;
-              font-family: 'Times New Roman', Times, serif;
-              font-size: 12pt;
-            }
-            @media print {
-              body { margin: 0; padding: 20px; }
-            }
-          </style>
-        </head>
-        <body>
-          <pre>${contract?.content || editedContent}</pre>
-        </body>
-        </html>
-      `)
-
-      printWindow.document.close()
-
-      // Wait for content to load then print
-      setTimeout(() => {
-        printWindow.print()
-        setIsExporting(false)
-      }, 500)
+      const blob = await response.blob()
+      const url = URL.createObjectURL(blob)
+      const a = document.createElement('a')
+      a.href = url
+      a.download = `${contract.title.replace(/[^a-z0-9]/gi, '_')}.pdf`
+      document.body.appendChild(a)
+      a.click()
+      document.body.removeChild(a)
+      URL.revokeObjectURL(url)
     } catch (error) {
       console.error("Export error:", error)
+      alert("Failed to export PDF. Please try again.")
+    } finally {
       setIsExporting(false)
     }
   }

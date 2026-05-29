@@ -1,5 +1,4 @@
-import { NextRequest, NextResponse } from "next/server"
-import { jsPDF } from "jspdf"
+import { jsPDF } from 'jspdf'
 
 interface ContractData {
   title: string
@@ -9,9 +8,39 @@ interface ContractData {
   value?: string
   deliverables?: string[]
   timeline?: string
+  status?: string
+  type?: string
+  created_at?: string
 }
 
-function generateContractPDF(contract: ContractData): ArrayBuffer {
+// Branding settings for white-label contracts
+export interface PDFBrandingSettings {
+  companyName?: string
+  logo?: string | null
+  primaryColor?: string
+  accentColor?: string
+  contractFooter?: string
+  hideContractGenBranding?: boolean
+  contractWatermark?: string | null
+}
+
+// Helper to convert hex to RGB tuple
+function hexToRgbTuple(hex: string): [number, number, number] {
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
+  if (result) {
+    return [
+      parseInt(result[1], 16),
+      parseInt(result[2], 16),
+      parseInt(result[3], 16),
+    ]
+  }
+  return [124, 58, 237] // Default purple
+}
+
+export function generateContractPDF(
+  contract: ContractData,
+  branding?: PDFBrandingSettings
+): jsPDF {
   const doc = new jsPDF({
     orientation: 'portrait',
     unit: 'mm',
@@ -24,12 +53,19 @@ function generateContractPDF(contract: ContractData): ArrayBuffer {
   const contentWidth = pageWidth - margin * 2
   let yPos = margin
 
-  // Colors
-  const primaryColor: [number, number, number] = [124, 58, 237]
+  // Colors - use branding colors if provided
+  const primaryColor: [number, number, number] = branding?.primaryColor
+    ? hexToRgbTuple(branding.primaryColor)
+    : [124, 58, 237] // Default Purple #7c3aed
   const textColor: [number, number, number] = [26, 26, 26]
   const grayColor: [number, number, number] = [102, 102, 102]
   const lightGray: [number, number, number] = [229, 224, 216]
 
+  // Company name for branding
+  const companyName = branding?.companyName || 'ContractGen'
+  const hideContractGenBranding = branding?.hideContractGenBranding || false
+
+  // Helper function to add new page if needed
   const checkPageBreak = (requiredSpace: number) => {
     if (yPos + requiredSpace > pageHeight - margin) {
       doc.addPage()
@@ -45,13 +81,25 @@ function generateContractPDF(contract: ContractData): ArrayBuffer {
   doc.line(margin, yPos, pageWidth - margin, yPos)
   yPos += 8
 
-  // Logo
+  // Logo/Brand
   doc.setFont('helvetica', 'bold')
   doc.setFontSize(10)
   doc.setTextColor(...primaryColor)
-  doc.text('ContractGen', margin, yPos)
 
-  // Date
+  // Add logo if provided, otherwise show company name
+  if (branding?.logo) {
+    try {
+      // Add logo image (assumes base64 data URL)
+      doc.addImage(branding.logo, 'PNG', margin, yPos - 6, 30, 10)
+    } catch (e) {
+      // Fallback to text if logo fails to load
+      doc.text(companyName, margin, yPos)
+    }
+  } else {
+    doc.text(companyName, margin, yPos)
+  }
+
+  // Date on the right
   doc.setFont('helvetica', 'normal')
   doc.setFontSize(9)
   doc.setTextColor(...grayColor)
@@ -67,7 +115,7 @@ function generateContractPDF(contract: ContractData): ArrayBuffer {
   doc.setFont('helvetica', 'bold')
   doc.setFontSize(22)
   doc.setTextColor(...textColor)
-  const titleLines = doc.splitTextToSize(contract.title || 'Untitled Contract', contentWidth)
+  const titleLines = doc.splitTextToSize(contract.title, contentWidth)
   doc.text(titleLines, margin, yPos)
   yPos += titleLines.length * 8 + 4
 
@@ -84,6 +132,7 @@ function generateContractPDF(contract: ContractData): ArrayBuffer {
   doc.roundedRect(margin, yPos, contentWidth, 32, 2, 2, 'FD')
   yPos += 8
 
+  // Brand
   doc.setFont('helvetica', 'bold')
   doc.setFontSize(10)
   doc.setTextColor(...primaryColor)
@@ -92,11 +141,9 @@ function generateContractPDF(contract: ContractData): ArrayBuffer {
   doc.setFont('helvetica', 'normal')
   doc.text(contract.brand || 'Not specified', margin + 8, yPos + 6)
 
-  doc.setFont('helvetica', 'bold')
-  doc.setTextColor(...primaryColor)
-  doc.text('CREATOR', pageWidth / 2 + 8, yPos)
+  // Creator
+  doc.text('CREATOR', pageWidth / 2 + 8, yPos - 0)
   doc.setTextColor(...textColor)
-  doc.setFont('helvetica', 'normal')
   doc.text(contract.creator || 'Not specified', pageWidth / 2 + 8, yPos + 6)
   yPos += 32
 
@@ -113,6 +160,7 @@ function generateContractPDF(contract: ContractData): ArrayBuffer {
     doc.setFontSize(10)
     doc.setTextColor(...textColor)
 
+    // Value
     if (contract.value) {
       doc.setFont('helvetica', 'bold')
       doc.text('Compensation:', margin, yPos)
@@ -121,6 +169,7 @@ function generateContractPDF(contract: ContractData): ArrayBuffer {
       yPos += 6
     }
 
+    // Timeline
     if (contract.timeline) {
       doc.setFont('helvetica', 'bold')
       doc.text('Timeline:', margin, yPos)
@@ -129,6 +178,7 @@ function generateContractPDF(contract: ContractData): ArrayBuffer {
       yPos += 6
     }
 
+    // Deliverables
     if (contract.deliverables && contract.deliverables.length > 0) {
       doc.setFont('helvetica', 'bold')
       doc.text('Deliverables:', margin, yPos)
@@ -156,6 +206,7 @@ function generateContractPDF(contract: ContractData): ArrayBuffer {
   doc.text('Agreement', margin, yPos)
   yPos += 8
 
+  // Content text
   doc.setFont('helvetica', 'normal')
   doc.setFontSize(10)
   doc.setTextColor(...textColor)
@@ -176,6 +227,7 @@ function generateContractPDF(contract: ContractData): ArrayBuffer {
   doc.setDrawColor(...lightGray)
   doc.setLineWidth(0.5)
 
+  // Brand signature
   const sigWidth = (contentWidth - 20) / 2
   doc.line(margin, yPos + 25, margin + sigWidth, yPos + 25)
   doc.setFont('helvetica', 'bold')
@@ -186,6 +238,7 @@ function generateContractPDF(contract: ContractData): ArrayBuffer {
   doc.text(contract.brand || '', margin, yPos + 35)
   doc.text('Date: _________________', margin, yPos + 40)
 
+  // Creator signature
   const rightSigX = pageWidth - margin - sigWidth
   doc.line(rightSigX, yPos + 25, pageWidth - margin, yPos + 25)
   doc.setFont('helvetica', 'bold')
@@ -194,6 +247,26 @@ function generateContractPDF(contract: ContractData): ArrayBuffer {
   doc.text(contract.creator || '', rightSigX, yPos + 35)
   doc.text('Date: _________________', rightSigX, yPos + 40)
 
+  // Add watermark if specified
+  if (branding?.contractWatermark) {
+    const totalPagesForWatermark = doc.getNumberOfPages()
+    for (let i = 1; i <= totalPagesForWatermark; i++) {
+      doc.setPage(i)
+      doc.setFont('helvetica', 'bold')
+      doc.setFontSize(60)
+      doc.setTextColor(200, 200, 200) // Light gray
+      doc.text(
+        branding.contractWatermark,
+        pageWidth / 2,
+        pageHeight / 2,
+        {
+          align: 'center',
+          angle: 45,
+        }
+      )
+    }
+  }
+
   // Footer on each page
   const totalPages = doc.getNumberOfPages()
   for (let i = 1; i <= totalPages; i++) {
@@ -201,48 +274,64 @@ function generateContractPDF(contract: ContractData): ArrayBuffer {
     doc.setFont('helvetica', 'normal')
     doc.setFontSize(8)
     doc.setTextColor(...grayColor)
-    doc.text(
-      `Generated by ContractGen • contract-gen.com • Page ${i} of ${totalPages}`,
-      pageWidth / 2,
-      pageHeight - 10,
-      { align: 'center' }
-    )
-  }
 
-  return doc.output('arraybuffer')
-}
+    // Build footer text based on branding settings
+    let footerText = ''
 
-export async function POST(request: NextRequest) {
-  try {
-    const body = await request.json()
-
-    const contract: ContractData = {
-      title: body.title || 'Untitled Contract',
-      brand: body.brand || body.parties?.brand || 'Brand',
-      creator: body.creator || body.parties?.creator || 'Creator',
-      content: body.content || '',
-      value: body.value || body.amount || '',
-      deliverables: body.deliverables || [],
-      timeline: body.timeline || body.deadline || '',
+    if (branding?.contractFooter) {
+      // Use custom footer
+      footerText = branding.contractFooter
+    } else if (hideContractGenBranding && companyName !== 'ContractGen') {
+      // Use company name without ContractGen branding
+      footerText = `${companyName} • Page ${i} of ${totalPages}`
+    } else {
+      // Default footer
+      footerText = `Generated by ContractGen • contract-gen.com • Page ${i} of ${totalPages}`
     }
 
-    const pdfBuffer = generateContractPDF(contract)
+    // Handle multi-line custom footers
+    const footerLines = footerText.split('\n')
+    let footerY = pageHeight - 10
 
-    const filename = `${contract.title.replace(/[^a-z0-9]/gi, '_')}.pdf`
+    if (footerLines.length > 1) {
+      footerY = pageHeight - 8 - (footerLines.length - 1) * 4
+    }
 
-    return new NextResponse(pdfBuffer, {
-      status: 200,
-      headers: {
-        'Content-Type': 'application/pdf',
-        'Content-Disposition': `attachment; filename="${filename}"`,
-        'Content-Length': pdfBuffer.byteLength.toString(),
-      },
+    footerLines.forEach((line, index) => {
+      doc.text(line.trim(), pageWidth / 2, footerY + index * 4, { align: 'center' })
     })
-  } catch (error) {
-    console.error('PDF generation error:', error)
-    return NextResponse.json(
-      { error: 'Failed to generate PDF', details: error instanceof Error ? error.message : 'Unknown error' },
-      { status: 500 }
-    )
+
+    // Add page number if custom footer doesn't include it
+    if (branding?.contractFooter && !branding.contractFooter.includes('Page')) {
+      doc.setFontSize(7)
+      doc.text(`Page ${i} of ${totalPages}`, pageWidth - margin, pageHeight - 5, { align: 'right' })
+    }
   }
+
+  return doc
+}
+
+export function downloadContractPDF(
+  contract: ContractData,
+  branding?: PDFBrandingSettings
+): void {
+  const doc = generateContractPDF(contract, branding)
+  const filename = `${contract.title.replace(/[^a-z0-9]/gi, '_')}.pdf`
+  doc.save(filename)
+}
+
+export function getContractPDFBlob(
+  contract: ContractData,
+  branding?: PDFBrandingSettings
+): Blob {
+  const doc = generateContractPDF(contract, branding)
+  return doc.output('blob')
+}
+
+export function getContractPDFBase64(
+  contract: ContractData,
+  branding?: PDFBrandingSettings
+): string {
+  const doc = generateContractPDF(contract, branding)
+  return doc.output('datauristring')
 }

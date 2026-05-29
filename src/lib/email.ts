@@ -3,18 +3,45 @@
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY
 
+// Branding settings for white-label emails
+export interface EmailBrandingSettings {
+  companyName?: string
+  logo?: string | null
+  primaryColor?: string
+  accentColor?: string
+  emailFooter?: string
+  hideContractGenBranding?: boolean
+  customEmailSender?: string | null
+}
+
 interface EmailOptions {
   to: string | string[]
   subject: string
   html: string
   from?: string
   replyTo?: string
+  branding?: EmailBrandingSettings
 }
 
 export async function sendEmail(options: EmailOptions) {
   if (!RESEND_API_KEY) {
     console.log('[Email] Resend not configured, logging email:', options.subject)
     return { success: true, demo: true }
+  }
+
+  // Determine sender based on branding
+  let fromAddress = options.from || 'ContractGen <noreply@contractgen.io>'
+
+  if (options.branding) {
+    const { companyName, customEmailSender } = options.branding
+
+    // Use custom email sender if configured (requires DNS verification)
+    if (customEmailSender) {
+      fromAddress = `${companyName || 'ContractGen'} <${customEmailSender}>`
+    } else if (companyName) {
+      // Use company name with default domain
+      fromAddress = `${companyName} <noreply@contractgen.io>`
+    }
   }
 
   try {
@@ -25,7 +52,7 @@ export async function sendEmail(options: EmailOptions) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        from: options.from || 'ContractGen <noreply@contractgen.io>',
+        from: fromAddress,
         to: Array.isArray(options.to) ? options.to : [options.to],
         subject: options.subject,
         html: options.html,
@@ -39,6 +66,68 @@ export async function sendEmail(options: EmailOptions) {
     console.error('[Email] Error sending email:', error)
     return { success: false, error }
   }
+}
+
+// Helper function to generate branded email wrapper
+export function wrapEmailWithBranding(
+  content: string,
+  branding?: EmailBrandingSettings
+): string {
+  const companyName = branding?.companyName || 'ContractGen'
+  const primaryColor = branding?.primaryColor || '#8b5cf6'
+  const accentColor = branding?.accentColor || '#d946ef'
+  const hideContractGenBranding = branding?.hideContractGenBranding || false
+  const customFooter = branding?.emailFooter || ''
+
+  // Generate logo HTML
+  let logoHtml = ''
+  if (branding?.logo) {
+    logoHtml = `<img src="${branding.logo}" alt="${companyName}" style="max-height: 48px; max-width: 200px; object-fit: contain;" />`
+  } else {
+    logoHtml = `
+      <div style="width: 48px; height: 48px; background: linear-gradient(135deg, ${primaryColor}, ${accentColor}); border-radius: 12px; margin: 0 auto 16px;"></div>
+      <h1 style="margin: 0; font-size: 24px; color: ${primaryColor};">${companyName}</h1>
+    `
+  }
+
+  // Generate footer HTML
+  let footerHtml = ''
+  if (customFooter) {
+    footerHtml = `<p style="white-space: pre-line;">${customFooter}</p>`
+  } else if (hideContractGenBranding && companyName !== 'ContractGen') {
+    footerHtml = `<p>&copy; ${new Date().getFullYear()} ${companyName}. All rights reserved.</p>`
+  } else {
+    footerHtml = `<p>&copy; ${new Date().getFullYear()} ContractGen. All rights reserved.</p>`
+  }
+
+  return `
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; }
+        .container { max-width: 600px; margin: 0 auto; padding: 40px 20px; }
+        .header { text-align: center; margin-bottom: 40px; }
+        .button { display: inline-block; background: linear-gradient(135deg, ${primaryColor}, ${accentColor}); color: white; padding: 14px 32px; border-radius: 12px; text-decoration: none; font-weight: 600; }
+        .footer { text-align: center; color: #6b7280; font-size: 14px; margin-top: 40px; padding-top: 20px; border-top: 1px solid #e5e7eb; }
+        a { color: ${primaryColor}; }
+      </style>
+    </head>
+    <body>
+      <div class="container">
+        <div class="header">
+          ${logoHtml}
+        </div>
+        ${content}
+        <div class="footer">
+          ${footerHtml}
+        </div>
+      </div>
+    </body>
+    </html>
+  `
 }
 
 // Email templates

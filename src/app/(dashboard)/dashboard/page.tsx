@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button"
 import { useAppStore, CONTRACT_TEMPLATES } from "@/lib/store"
 import { useUsageStore, getPlanName } from "@/lib/usage-store"
 import { DashboardSkeleton } from "@/components/Skeleton"
+import { Onboarding, useOnboarding } from "@/components/Onboarding"
 
 interface Contract {
   id: string
@@ -95,6 +96,7 @@ export default function DashboardPage() {
   const [isLoading, setIsLoading] = useState(true)
   const [stats, setStats] = useState<DashboardStats>(demoStats)
   const [recentContracts, setRecentContracts] = useState<Contract[]>(demoContracts)
+  const { showOnboarding, completeOnboarding } = useOnboarding()
   const {
     contractsThisMonth,
     getLimit,
@@ -232,16 +234,18 @@ export default function DashboardPage() {
   ]
 
   return (
-    <div className="p-6 lg:p-8 max-w-7xl mx-auto">
+    <>
+      {showOnboarding && <Onboarding onComplete={completeOnboarding} />}
+      <div className="p-4 sm:p-6 lg:p-8 max-w-7xl mx-auto">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6 lg:mb-8">
         <div>
-          <h1 className="text-2xl font-bold tracking-tight mb-1">
+          <h1 className="text-xl sm:text-2xl font-bold tracking-tight mb-1 text-gray-900 dark:text-white">
             Welcome back, {user?.name?.split(" ")[0] || "Creator"}
           </h1>
-          <p className="text-gray-500 text-sm">Here's what's happening with your contracts</p>
+          <p className="text-gray-500 dark:text-gray-400 text-sm">Here&apos;s what&apos;s happening with your contracts</p>
         </div>
-        <Link href="/dashboard/contracts/new">
+        <Link href="/dashboard/contracts/new" className="hidden sm:block">
           <Button className="h-10 px-5 bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-500 hover:to-fuchsia-500 rounded-xl font-medium shadow-lg shadow-violet-500/20">
             <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
@@ -252,28 +256,28 @@ export default function DashboardPage() {
       </div>
 
       {/* Stats Grid */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-6 lg:mb-8">
         {statsDisplay.map((stat, i) => (
           <Card
             key={i}
-            className="group relative overflow-hidden bg-white border border-[#E5E0D8] hover:border-[#D5D0C8] hover:shadow-md transition-all duration-300 rounded-2xl"
+            className="group relative overflow-hidden bg-white dark:bg-gray-800 border border-[#E5E0D8] dark:border-gray-700 hover:border-[#D5D0C8] dark:hover:border-gray-600 hover:shadow-md transition-all duration-300 rounded-xl sm:rounded-2xl"
           >
             <div className={`absolute inset-0 bg-gradient-to-br ${stat.color} opacity-0 group-hover:opacity-5 transition-opacity`} />
-            <CardContent className="p-5">
-              <div className="flex items-start justify-between mb-4">
-                <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${stat.color} flex items-center justify-center text-white`}>
+            <CardContent className="p-3 sm:p-5">
+              <div className="flex items-start justify-between mb-2 sm:mb-4">
+                <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-gradient-to-br ${stat.color} flex items-center justify-center text-white`}>
                   {stat.icon}
                 </div>
-                <span className={`text-xs px-2 py-1 rounded-full ${
-                  stat.trend === "up" ? "bg-emerald-50 text-emerald-600" :
-                  stat.trend === "warning" ? "bg-amber-50 text-amber-600" :
-                  "bg-gray-100 text-gray-600"
+                <span className={`text-[10px] sm:text-xs px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full ${
+                  stat.trend === "up" ? "bg-emerald-50 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400" :
+                  stat.trend === "warning" ? "bg-amber-50 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400" :
+                  "bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300"
                 }`}>
                   {stat.change}
                 </span>
               </div>
-              <div className="text-3xl font-bold tracking-tight text-gray-900 mb-1">{stat.value}</div>
-              <div className="text-sm text-gray-500">{stat.label}</div>
+              <div className="text-xl sm:text-3xl font-bold tracking-tight text-gray-900 dark:text-white mb-0.5 sm:mb-1">{stat.value}</div>
+              <div className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">{stat.label}</div>
             </CardContent>
           </Card>
         ))}
@@ -512,5 +516,6 @@ export default function DashboardPage() {
         </div>
       </div>
     </div>
+    </>
   )
 }
