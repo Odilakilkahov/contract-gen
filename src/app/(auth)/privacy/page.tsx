@@ -319,11 +319,11 @@ export default function PrivacyPage() {
                   <td className="border border-gray-200 px-4 py-2">Все данные аккаунта, контент договоров</td>
                   <td className="border border-gray-200 px-4 py-2">США</td>
                 </tr>
-                <tr>
-                  <td className="border border-gray-200 px-4 py-2"><strong>Stripe</strong></td>
-                  <td className="border border-gray-200 px-4 py-2">Обработка платежей</td>
-                  <td className="border border-gray-200 px-4 py-2">Платёжные данные, email, имя</td>
-                  <td className="border border-gray-200 px-4 py-2">США</td>
+                <tr className="bg-blue-50">
+                  <td className="border border-gray-200 px-4 py-2"><strong>Paddle</strong></td>
+                  <td className="border border-gray-200 px-4 py-2">Merchant of Record, обработка платежей, выставление счетов, налоговое соответствие</td>
+                  <td className="border border-gray-200 px-4 py-2">Email, имя, платёжный адрес, данные платёжного метода (обрабатываются напрямую Paddle), история транзакций</td>
+                  <td className="border border-gray-200 px-4 py-2">Великобритания / США</td>
                 </tr>
                 <tr>
                   <td className="border border-gray-200 px-4 py-2"><strong>OpenAI</strong></td>
@@ -353,14 +353,38 @@ export default function PrivacyPage() {
             </table>
           </div>
 
-          <h3 className="text-xl font-medium text-gray-900 mb-3">5.2. Аналитические сервисы</h3>
+          <div className="bg-blue-50 border-l-4 border-blue-400 p-4 rounded-r-lg mb-6">
+            <h3 className="text-lg font-semibold text-blue-900 mb-2">5.2. Обработка платежей (Paddle)</h3>
+            <p className="text-blue-800 mb-3">
+              Мы используем <strong>Paddle.com Market Limited</strong> в качестве нашего Merchant of Record
+              для обработки платежей. Когда Вы совершаете покупку, Paddle собирает и обрабатывает Вашу
+              платёжную информацию. Практики Paddle в отношении конфиденциальности регулируются их
+              Политикой конфиденциальности:{' '}
+              <a href="https://paddle.com/legal/privacy" target="_blank" rel="noopener noreferrer" className="underline hover:text-blue-600">
+                https://paddle.com/legal/privacy
+              </a>
+            </p>
+            <p className="text-blue-800 mb-2"><strong>Данные, передаваемые Paddle:</strong></p>
+            <ul className="list-disc pl-6 text-blue-800 space-y-1">
+              <li>Адрес электронной почты</li>
+              <li>Платёжный адрес (billing address)</li>
+              <li>Данные платёжного метода (обрабатываются напрямую Paddle, не хранятся нами)</li>
+              <li>История транзакций</li>
+            </ul>
+            <p className="text-blue-800 mt-3 text-sm">
+              Paddle выступает в роли контроллера данных для платёжной информации и несёт ответственность
+              за её безопасное хранение и обработку в соответствии с PCI DSS и GDPR.
+            </p>
+          </div>
+
+          <h3 className="text-xl font-medium text-gray-900 mb-3">5.3. Аналитические сервисы</h3>
           <ul className="list-disc pl-6 mb-4 space-y-1">
             <li><strong>Google Analytics:</strong> анализ трафика и поведения пользователей (при наличии согласия)</li>
             <li><strong>Mixpanel:</strong> продуктовая аналитика (при наличии согласия)</li>
             <li><strong>Sentry:</strong> мониторинг ошибок и производительности</li>
           </ul>
 
-          <h3 className="text-xl font-medium text-gray-900 mb-3">5.3. Иные случаи передачи</h3>
+          <h3 className="text-xl font-medium text-gray-900 mb-3">5.4. Иные случаи передачи</h3>
           <p className="mb-3">
             <strong>a) Юридические требования:</strong> Мы можем раскрыть данные, если это требуется
             законом, судебным решением или запросом государственного органа.
@@ -374,7 +398,7 @@ export default function PrivacyPage() {
             или банкротства персональные данные могут быть переданы правопреемнику.
           </p>
 
-          <h3 className="text-xl font-medium text-gray-900 mb-3">5.4. Гарантии при передаче</h3>
+          <h3 className="text-xl font-medium text-gray-900 mb-3">5.5. Гарантии при передаче</h3>
           <p className="mb-3">
             Все поставщики услуг связаны договорными обязательствами по защите данных (Data Processing
             Agreements), соответствующими требованиям GDPR и ФЗ-152. Мы проводим проверку (due diligence)
