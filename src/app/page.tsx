@@ -185,6 +185,15 @@ function LogoTwitch() {
   )
 }
 
+function PlatformBadge({ name, icon, color }: { name: string; icon: string; color: string }) {
+  return (
+    <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur rounded-full border border-[#E8E0D4] hover:border-[#D0C8BC] hover:shadow-md transition-all cursor-default group">
+      <span className="text-lg group-hover:scale-110 transition-transform">{icon}</span>
+      <span className="text-sm font-medium text-gray-600 whitespace-nowrap">{name}</span>
+    </div>
+  )
+}
+
 // ─── FAQ accordion ────────────────────────────────────────────────────────────
 
 const faqs = [
@@ -452,19 +461,34 @@ export default function Home() {
       </section>
 
       {/* ── TRUST BAR ── */}
-      <section className="py-10 border-y" style={{ borderColor: "#E8E0D4" }}>
+      <section className="py-10 border-y overflow-hidden" style={{ borderColor: "#E8E0D4" }}>
         <div className="max-w-5xl mx-auto px-6">
           <p
             className="text-center text-[12px] uppercase tracking-widest mb-8"
             style={{ color: "#C4B8A8", fontFamily: "var(--font-inter)" }}
           >
-            Используют создатели контента с этих платформ
+            Работает с любыми платформами
           </p>
-          <div className="flex items-center justify-center gap-10 sm:gap-16 flex-wrap">
-            <LogoYouTube />
-            <LogoTikTok />
-            <LogoInstagram />
-            <LogoTwitch />
+        </div>
+        {/* Infinite scroll marquee */}
+        <div className="relative">
+          <div className="flex animate-marquee gap-12 sm:gap-16">
+            {[...Array(2)].map((_, i) => (
+              <div key={i} className="flex items-center gap-12 sm:gap-16 shrink-0">
+                <PlatformBadge name="YouTube" icon="▶️" color="#FF0000" />
+                <PlatformBadge name="TikTok" icon="🎵" color="#000000" />
+                <PlatformBadge name="Instagram" icon="📷" color="#E4405F" />
+                <PlatformBadge name="Twitch" icon="🎮" color="#9146FF" />
+                <PlatformBadge name="Twitter/X" icon="𝕏" color="#000000" />
+                <PlatformBadge name="Telegram" icon="✈️" color="#0088CC" />
+                <PlatformBadge name="Pinterest" icon="📌" color="#BD081C" />
+                <PlatformBadge name="LinkedIn" icon="💼" color="#0A66C2" />
+                <PlatformBadge name="Snapchat" icon="👻" color="#FFFC00" />
+                <PlatformBadge name="Discord" icon="🎧" color="#5865F2" />
+                <PlatformBadge name="Podcasts" icon="🎙️" color="#8B5CF6" />
+                <PlatformBadge name="Blogs" icon="✍️" color="#FF6B35" />
+              </div>
+            ))}
           </div>
         </div>
       </section>
