@@ -1,0 +1,315 @@
+{
+  "common": {
+    "login": "Se connecter",
+    "signup": "S'inscrire",
+    "logout": "Se deconnecter",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "create": "Creer",
+    "loading": "Chargement...",
+    "error": "Erreur",
+    "success": "Succes",
+    "backToHome": "Retour a l'accueil",
+    "viewAll": "Voir tout",
+    "orContinueWith": "Ou continuer avec"
+  },
+  "landing": {
+    "nav": {
+      "features": "Fonctionnalites",
+      "howItWorks": "Comment ca marche",
+      "pricing": "Tarifs",
+      "faq": "FAQ"
+    },
+    "hero": {
+      "badge": "Propulse par l'IA - Sans avocat - Conforme FTC",
+      "title": "Contrats",
+      "titleHighlight": "en 2 minutes",
+      "titleEnd": "Sans avocat.",
+      "subtitle": "Decrivez votre accord - l'IA cree un contrat juridiquement solide. Envoyez pour signature electronique directement depuis votre navigateur. Fonctionne pour YouTube, TikTok, Instagram et Twitch.",
+      "cta": "Creer un contrat gratuitement",
+      "ctaDemo": "Voir la demo",
+      "freeplan": "Plan gratuit",
+      "noCard": "Sans carte",
+      "creators": "5 000+ createurs"
+    },
+    "trust": {
+      "title": "Utilise par les createurs de contenu sur ces plateformes"
+    },
+    "features": {
+      "title": "Pourquoi ContractGen?",
+      "subtitle": "Trois raisons pour lesquelles 5 000+ influenceurs nous ont choisis.",
+      "fast": {
+        "tag": "Rapide",
+        "title": "2 minutes au lieu de 2 heures",
+        "desc": "Repondez a quelques questions. L'IA assemble un contrat complet avec toutes les clauses - plus vite que de faire un cafe."
+      },
+      "protect": {
+        "tag": "Protege",
+        "title": "Protection juridique des le premier jour",
+        "desc": "Tous les modeles sont developpes par des avocats specialises en droit des medias. Exigences FTC, droits sur le contenu, conditions de paiement - tout est inclus."
+      },
+      "clear": {
+        "tag": "Clair",
+        "title": "Pas de jargon juridique",
+        "desc": "Les contrats sont rediges simplement et clairement. La marque comprend les termes - les accords se concluent plus vite."
+      }
+    },
+    "how": {
+      "title": "Comment ca marche",
+      "subtitle": "Trois etapes - et votre contrat est pret a signer.",
+      "step1": {
+        "num": "01",
+        "title": "Decrivez l'accord",
+        "desc": "Entrez les details: marque, plateforme, contenu, paiement. Prend moins d'une minute."
+      },
+      "step2": {
+        "num": "02",
+        "title": "Obtenez votre contrat",
+        "desc": "L'IA genere un document complet avec toutes les clauses. Vous pouvez le modifier."
+      },
+      "step3": {
+        "num": "03",
+        "title": "Signez et concluez",
+        "desc": "Envoyez un lien a la marque. Signature electronique dans le navigateur - pas de telechargements."
+      }
+    },
+    "templates": {
+      "title": "Modeles prets a l'emploi",
+      "subtitle": "Choisissez ce qui convient - et personnalisez.",
+      "sponsored": "Post sponsorise",
+      "ugc": "Contenu UGC",
+      "ambassador": "Ambassadeur de marque",
+      "nda": "NDA",
+      "licensing": "Licence",
+      "review": "Avis produit",
+      "collab": "Collaboration",
+      "exclusivity": "Exclusivite",
+      "popular": "Populaire",
+      "new": "Nouveau",
+      "longterm": "Long terme",
+      "basic": "Basique"
+    },
+    "testimonials": {
+      "title": "Ce que disent les createurs",
+      "t1": {
+        "text": "Avant, je passais 2-3 heures sur chaque contrat avec un avocat. Maintenant je le fais en 5 minutes. J'ai deja conclu 14 accords via ContractGen.",
+        "name": "Alina K.",
+        "handle": "@alinacreates",
+        "platform": "YouTube - 480K"
+      },
+      "t2": {
+        "text": "Les marques prennent les conditions plus au serieux maintenant - je vois la difference. Les contrats ont l'air professionnels, et ca change les negociations.",
+        "name": "Max R.",
+        "handle": "@maxtech_",
+        "platform": "TikTok - 1.2M"
+      },
+      "t3": {
+        "text": "La signature electronique est tout simplement magique. Les contrats se perdaient dans les emails pendant des semaines. Maintenant on signe en 10 minutes.",
+        "name": "Diana Y.",
+        "handle": "@dianabeauty",
+        "platform": "Instagram - 220K"
+      }
+    },
+    "faq": {
+      "title": "Questions frequentes",
+      "q1": "Ai-je besoin d'un avocat pour utiliser ContractGen?",
+      "a1": "Non. Nos modeles sont developpes par des avocats specialises en droit des medias. Vous repondez aux questions - l'IA assemble automatiquement le bon contrat.",
+      "q2": "Les contrats sont-ils juridiquement contraignants?",
+      "a2": "Oui. Les signatures electroniques sont reconnues dans la plupart des juridictions en vertu des lois sur la signature electronique. Les contrats contiennent toutes les clauses necessaires pour proteger les deux parties.",
+      "q3": "Quels types de contrats sont disponibles?",
+      "a3": "Posts sponsorises, contenu UGC, ambassadeurs, NDA, licences de contenu, collaborations et plus - plus de 8 modeles.",
+      "q4": "Puis-je modifier le contrat genere?",
+      "a4": "Bien sur. Apres la generation, vous pouvez modifier n'importe quelle section, ajouter vos propres clauses et sauvegarder le modele modifie pour une utilisation future.",
+      "q5": "Comment fonctionne la signature electronique?",
+      "a5": "Vous envoyez un lien a la marque. Ils signent directement dans le navigateur - pas de telechargements ni d'inscription. Vous recevez une notification en temps reel."
+    },
+    "pricing": {
+      "title": "Tarifs simples",
+      "subtitle": "Commencez gratuitement. Evoluez quand necessaire.",
+      "mostPopular": "Le plus populaire",
+      "starter": {
+        "name": "Starter",
+        "price": "0 EUR",
+        "period": "pour toujours",
+        "desc": "Essayez sans risque",
+        "f1": "3 contrats/mois",
+        "f2": "Modeles de base",
+        "f3": "Support email",
+        "cta": "Commencer gratuitement"
+      },
+      "pro": {
+        "name": "Pro",
+        "price": "19 EUR",
+        "period": "/mois",
+        "desc": "Pour les influenceurs actifs",
+        "f1": "Contrats illimites",
+        "f2": "Tous les 8+ modeles",
+        "f3": "Signatures electroniques",
+        "f4": "Suggestions de clauses IA",
+        "f5": "Support prioritaire",
+        "cta": "Demarrer l'essai gratuit"
+      },
+      "agency": {
+        "name": "Agence",
+        "price": "79 EUR",
+        "period": "/mois",
+        "desc": "Pour les equipes et agences",
+        "f1": "Tout dans Pro",
+        "f2": "5 membres d'equipe",
+        "f3": "White-label",
+        "f4": "Acces API",
+        "f5": "Manager personnel",
+        "cta": "Contactez-nous"
+      }
+    },
+    "cta": {
+      "title": "Votre premier contrat - maintenant.",
+      "subtitle": "Rejoignez 5 000+ influenceurs qui concluent des accords rapidement et sans avocats.",
+      "button": "Creer un contrat gratuitement",
+      "note": "Sans carte de credit - Garantie de remboursement de 30 jours - Annulez a tout moment"
+    },
+    "footer": {
+      "terms": "Conditions",
+      "privacy": "Confidentialite"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Bon retour",
+      "subtitle": "Connectez-vous a votre compte ContractGen",
+      "email": "Email",
+      "password": "Mot de passe",
+      "rememberMe": "Se souvenir de moi",
+      "forgotPassword": "Mot de passe oublie?",
+      "submit": "Se connecter",
+      "noAccount": "Pas de compte?",
+      "signupLink": "Inscrivez-vous gratuitement"
+    },
+    "signup": {
+      "title": "Creez votre compte",
+      "subtitle": "Commencez a creer des contrats professionnels en quelques minutes",
+      "name": "Nom complet",
+      "email": "Email",
+      "password": "Mot de passe",
+      "passwordHint": "Minimum 8 caracteres",
+      "confirmPassword": "Confirmer le mot de passe",
+      "ageConfirm": "En m'inscrivant, je confirme avoir 18 ans ou plus et j'accepte les",
+      "termsLink": "Conditions d'utilisation",
+      "and": "et",
+      "privacyLink": "Politique de confidentialite",
+      "dataConsent": "Je consens au traitement de mes donnees personnelles conformement a la",
+      "submit": "Creer un compte",
+      "hasAccount": "Deja un compte?",
+      "loginLink": "Se connecter"
+    },
+    "errors": {
+      "fillAllFields": "Veuillez remplir tous les champs",
+      "passwordLength": "Le mot de passe doit contenir au moins 8 caracteres",
+      "passwordMismatch": "Les mots de passe ne correspondent pas",
+      "ageRequired": "Vous devez confirmer avoir 18 ans ou plus",
+      "consentRequired": "Vous devez consentir au traitement des donnees personnelles",
+      "networkError": "Erreur reseau. Veuillez reessayer.",
+      "loginFailed": "Echec de connexion",
+      "signupFailed": "Echec d'inscription"
+    }
+  },
+  "dashboard": {
+    "welcome": "Bon retour",
+    "subtitle": "Voici ce qui se passe avec vos contrats",
+    "newContract": "Nouveau contrat",
+    "stats": {
+      "totalContracts": "Total des contrats",
+      "pending": "En attente",
+      "signed": "Signes",
+      "revenue": "Revenus",
+      "expiring": "expirent",
+      "deals": "accords"
+    },
+    "recentContracts": "Contrats recents",
+    "contractActivity": "Activite des contrats",
+    "created": "Crees",
+    "quickActions": "Actions rapides",
+    "aiPowered": "Generation IA",
+    "browseTemplates": "Parcourir les modeles",
+    "templatesCount": "8+ prets a l'emploi",
+    "importContract": "Importer un contrat",
+    "uploadPdf": "Telecharger un PDF existant",
+    "popularTemplates": "Modeles populaires",
+    "starterPlan": "Plan Starter",
+    "contractsUsed": "{used} sur {total} contrats utilises ce mois",
+    "upgradePlan": "Passer au superieur",
+    "status": {
+      "draft": "Brouillon",
+      "pending": "En attente",
+      "signed": "Signe",
+      "expired": "Expire"
+    }
+  },
+  "contracts": {
+    "new": {
+      "title": "Creer un nouveau contrat",
+      "step1": "Choisir un modele",
+      "step2": "Details du contrat",
+      "step3": "Verifier et envoyer",
+      "brandName": "Nom de la marque",
+      "influencerName": "Nom de l'influenceur",
+      "compensation": "Compensation",
+      "deliverables": "Livrables",
+      "deadline": "Date limite du contenu",
+      "aiDisclaimer": "Les contrats sont generes par l'IA et ne constituent pas un conseil juridique. Nous recommandons de les faire verifier par un avocat qualifie avant de signer."
+    },
+    "sign": {
+      "title": "Signer le contrat",
+      "drawSignature": "Dessiner la signature",
+      "typeSignature": "Taper la signature",
+      "clear": "Effacer",
+      "confirm": "Confirmer la signature",
+      "signed": "Contrat signe avec succes"
+    }
+  },
+  "pricing": {
+    "title": "Ameliorer votre plan",
+    "subtitle": "Choisissez le plan qui vous convient",
+    "currentPlan": "Plan actuel",
+    "upgrade": "Ameliorer",
+    "features": {
+      "contracts": "contrats/mois",
+      "unlimited": "Contrats illimites",
+      "templates": "Tous les modeles",
+      "esignatures": "Signatures electroniques incluses",
+      "ai": "Suggestions de clauses IA",
+      "support": "Support prioritaire",
+      "team": "Membres d'equipe",
+      "api": "Acces API",
+      "whitelabel": "Contrats white-label"
+    }
+  },
+  "legal": {
+    "terms": "Conditions d'utilisation",
+    "privacy": "Politique de confidentialite",
+    "cookies": "Politique des cookies"
+  },
+  "cookie": {
+    "banner": "Nous utilisons des cookies pour ameliorer votre experience",
+    "acceptAll": "Tout accepter",
+    "necessaryOnly": "Necessaires uniquement",
+    "settings": "Parametres",
+    "necessary": "Necessaires",
+    "analytics": "Analytique",
+    "marketing": "Marketing"
+  },
+  "language": {
+    "en": "Anglais",
+    "ru": "Russe",
+    "es": "Espagnol",
+    "de": "Allemand",
+    "fr": "Francais",
+    "zh": "Chinois",
+    "ja": "Japonais",
+    "ko": "Coreen",
+    "pt": "Portugais",
+    "ar": "Arabe"
+  }
+}

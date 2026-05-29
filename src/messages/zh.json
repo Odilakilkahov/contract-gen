@@ -1,0 +1,315 @@
+{
+  "common": {
+    "login": "登录",
+    "signup": "注册",
+    "logout": "退出",
+    "save": "保存",
+    "cancel": "取消",
+    "delete": "删除",
+    "edit": "编辑",
+    "create": "创建",
+    "loading": "加载中...",
+    "error": "错误",
+    "success": "成功",
+    "backToHome": "返回首页",
+    "viewAll": "查看全部",
+    "orContinueWith": "或继续使用"
+  },
+  "landing": {
+    "nav": {
+      "features": "功能",
+      "howItWorks": "使用方法",
+      "pricing": "价格",
+      "faq": "常见问题"
+    },
+    "hero": {
+      "badge": "AI驱动 - 无需律师 - 符合FTC规定",
+      "title": "合同",
+      "titleHighlight": "2分钟内完成",
+      "titleEnd": "无需律师。",
+      "subtitle": "描述您的交易 - AI创建具有法律效力的合同。直接从浏览器发送电子签名。适用于YouTube、TikTok、Instagram和Twitch。",
+      "cta": "免费创建合同",
+      "ctaDemo": "观看演示",
+      "freeplan": "免费计划",
+      "noCard": "无需信用卡",
+      "creators": "5,000+创作者"
+    },
+    "trust": {
+      "title": "这些平台的内容创作者正在使用"
+    },
+    "features": {
+      "title": "为什么选择ContractGen？",
+      "subtitle": "5,000+网红选择我们的三个原因。",
+      "fast": {
+        "tag": "快速",
+        "title": "2分钟而不是2小时",
+        "desc": "回答几个问题。AI会组装一份包含所有条款的完整合同 - 比泡咖啡还快。"
+      },
+      "protect": {
+        "tag": "保护",
+        "title": "从第一天起就有法律保护",
+        "desc": "所有模板均由媒体律师开发。FTC要求、内容权利、付款条款 - 全部包含。"
+      },
+      "clear": {
+        "tag": "清晰",
+        "title": "没有法律术语",
+        "desc": "合同简单明了。品牌理解条款 - 交易更快完成。"
+      }
+    },
+    "how": {
+      "title": "使用方法",
+      "subtitle": "三个步骤 - 您的合同就准备好签署了。",
+      "step1": {
+        "num": "01",
+        "title": "描述交易",
+        "desc": "输入详细信息：品牌、平台、内容、付款。不到一分钟。"
+      },
+      "step2": {
+        "num": "02",
+        "title": "获取合同",
+        "desc": "AI生成包含所有条款的完整文档。您可以编辑它。"
+      },
+      "step3": {
+        "num": "03",
+        "title": "签署并完成",
+        "desc": "向品牌发送链接。浏览器中电子签名 - 无需下载。"
+      }
+    },
+    "templates": {
+      "title": "现成模板",
+      "subtitle": "选择适合的 - 然后自定义。",
+      "sponsored": "赞助帖子",
+      "ugc": "UGC内容",
+      "ambassador": "品牌大使",
+      "nda": "保密协议",
+      "licensing": "许可",
+      "review": "产品评测",
+      "collab": "合作",
+      "exclusivity": "独家",
+      "popular": "热门",
+      "new": "新",
+      "longterm": "长期",
+      "basic": "基础"
+    },
+    "testimonials": {
+      "title": "创作者怎么说",
+      "t1": {
+        "text": "以前我每份合同都要花2-3小时和律师打交道。现在5分钟就搞定。已经通过ContractGen完成了14笔交易。",
+        "name": "Alina K.",
+        "handle": "@alinacreates",
+        "platform": "YouTube - 480K"
+      },
+      "t2": {
+        "text": "品牌开始更认真地对待条款了 - 我看到了区别。合同看起来很专业，这改变了谈判。",
+        "name": "Max R.",
+        "handle": "@maxtech_",
+        "platform": "TikTok - 1.2M"
+      },
+      "t3": {
+        "text": "电子签名简直是魔法。以前合同在邮件里丢失好几周。现在我们10分钟就能签好。",
+        "name": "Diana Y.",
+        "handle": "@dianabeauty",
+        "platform": "Instagram - 220K"
+      }
+    },
+    "faq": {
+      "title": "常见问题",
+      "q1": "使用ContractGen需要律师吗？",
+      "a1": "不需要。我们的模板由专门从事媒体法的律师开发。您回答问题 - AI自动组装正确的合同。",
+      "q2": "合同具有法律约束力吗？",
+      "a2": "是的。根据电子签名法，电子签名在大多数司法管辖区得到认可。合同包含所有必要的条款来保护双方。",
+      "q3": "有哪些类型的合同？",
+      "a3": "赞助帖子、UGC内容、大使、保密协议、内容许可、合作等 - 超过8个模板。",
+      "q4": "我可以编辑生成的合同吗？",
+      "a4": "当然可以。生成后，您可以编辑任何部分、添加自己的条款，并保存修改后的模板供将来使用。",
+      "q5": "电子签名如何工作？",
+      "a5": "您向品牌发送链接。他们直接在浏览器中签名 - 无需下载或注册。您实时收到通知。"
+    },
+    "pricing": {
+      "title": "简单定价",
+      "subtitle": "免费开始。需要时扩展。",
+      "mostPopular": "最受欢迎",
+      "starter": {
+        "name": "入门",
+        "price": "免费",
+        "period": "永久",
+        "desc": "无风险试用",
+        "f1": "每月3份合同",
+        "f2": "基础模板",
+        "f3": "邮件支持",
+        "cta": "免费开始"
+      },
+      "pro": {
+        "name": "专业版",
+        "price": "$19",
+        "period": "/月",
+        "desc": "适合活跃的网红",
+        "f1": "无限合同",
+        "f2": "所有8+模板",
+        "f3": "电子签名",
+        "f4": "AI条款建议",
+        "f5": "优先支持",
+        "cta": "开始免费试用"
+      },
+      "agency": {
+        "name": "机构版",
+        "price": "$79",
+        "period": "/月",
+        "desc": "适合团队和机构",
+        "f1": "专业版全部功能",
+        "f2": "5名团队成员",
+        "f3": "白标",
+        "f4": "API访问",
+        "f5": "专属经理",
+        "cta": "联系我们"
+      }
+    },
+    "cta": {
+      "title": "您的第一份合同 - 现在就开始。",
+      "subtitle": "加入5,000+快速完成交易且无需律师的网红行列。",
+      "button": "免费创建合同",
+      "note": "无需信用卡 - 30天退款保证 - 随时取消"
+    },
+    "footer": {
+      "terms": "条款",
+      "privacy": "隐私"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "欢迎回来",
+      "subtitle": "登录您的ContractGen账户",
+      "email": "邮箱",
+      "password": "密码",
+      "rememberMe": "记住我",
+      "forgotPassword": "忘记密码？",
+      "submit": "登录",
+      "noAccount": "没有账户？",
+      "signupLink": "免费注册"
+    },
+    "signup": {
+      "title": "创建账户",
+      "subtitle": "几分钟内开始创建专业合同",
+      "name": "全名",
+      "email": "邮箱",
+      "password": "密码",
+      "passwordHint": "至少8个字符",
+      "confirmPassword": "确认密码",
+      "ageConfirm": "注册即表示我确认已满18岁并接受",
+      "termsLink": "服务条款",
+      "and": "和",
+      "privacyLink": "隐私政策",
+      "dataConsent": "我同意按照以下规定处理我的个人数据",
+      "submit": "创建账户",
+      "hasAccount": "已有账户？",
+      "loginLink": "登录"
+    },
+    "errors": {
+      "fillAllFields": "请填写所有字段",
+      "passwordLength": "密码必须至少8个字符",
+      "passwordMismatch": "密码不匹配",
+      "ageRequired": "您必须确认已满18岁",
+      "consentRequired": "您必须同意个人数据处理",
+      "networkError": "网络错误。请重试。",
+      "loginFailed": "登录失败",
+      "signupFailed": "注册失败"
+    }
+  },
+  "dashboard": {
+    "welcome": "欢迎回来",
+    "subtitle": "这是您合同的最新动态",
+    "newContract": "新合同",
+    "stats": {
+      "totalContracts": "合同总数",
+      "pending": "待处理",
+      "signed": "已签署",
+      "revenue": "收入",
+      "expiring": "即将到期",
+      "deals": "笔交易"
+    },
+    "recentContracts": "最近的合同",
+    "contractActivity": "合同活动",
+    "created": "已创建",
+    "quickActions": "快速操作",
+    "aiPowered": "AI生成",
+    "browseTemplates": "浏览模板",
+    "templatesCount": "8+可用",
+    "importContract": "导入合同",
+    "uploadPdf": "上传现有PDF",
+    "popularTemplates": "热门模板",
+    "starterPlan": "入门计划",
+    "contractsUsed": "本月已使用{used}/{total}份合同",
+    "upgradePlan": "升级计划",
+    "status": {
+      "draft": "草稿",
+      "pending": "待处理",
+      "signed": "已签署",
+      "expired": "已过期"
+    }
+  },
+  "contracts": {
+    "new": {
+      "title": "创建新合同",
+      "step1": "选择模板",
+      "step2": "合同详情",
+      "step3": "审核并发送",
+      "brandName": "品牌名称",
+      "influencerName": "网红名称",
+      "compensation": "报酬",
+      "deliverables": "交付物",
+      "deadline": "内容截止日期",
+      "aiDisclaimer": "合同由AI生成，不构成法律建议。我们建议在签署前由合格律师审核。"
+    },
+    "sign": {
+      "title": "签署合同",
+      "drawSignature": "手绘签名",
+      "typeSignature": "输入签名",
+      "clear": "清除",
+      "confirm": "确认签名",
+      "signed": "合同签署成功"
+    }
+  },
+  "pricing": {
+    "title": "升级您的计划",
+    "subtitle": "选择适合您的计划",
+    "currentPlan": "当前计划",
+    "upgrade": "升级",
+    "features": {
+      "contracts": "份合同/月",
+      "unlimited": "无限合同",
+      "templates": "所有模板",
+      "esignatures": "包含电子签名",
+      "ai": "AI条款建议",
+      "support": "优先支持",
+      "team": "团队成员",
+      "api": "API访问",
+      "whitelabel": "白标合同"
+    }
+  },
+  "legal": {
+    "terms": "服务条款",
+    "privacy": "隐私政策",
+    "cookies": "Cookie政策"
+  },
+  "cookie": {
+    "banner": "我们使用Cookie来改善您的体验",
+    "acceptAll": "全部接受",
+    "necessaryOnly": "仅必要",
+    "settings": "设置",
+    "necessary": "必要",
+    "analytics": "分析",
+    "marketing": "营销"
+  },
+  "language": {
+    "en": "英语",
+    "ru": "俄语",
+    "es": "西班牙语",
+    "de": "德语",
+    "fr": "法语",
+    "zh": "中文",
+    "ja": "日语",
+    "ko": "韩语",
+    "pt": "葡萄牙语",
+    "ar": "阿拉伯语"
+  }
+}

@@ -1,0 +1,315 @@
+{
+  "common": {
+    "login": "Anmelden",
+    "signup": "Registrieren",
+    "logout": "Abmelden",
+    "save": "Speichern",
+    "cancel": "Abbrechen",
+    "delete": "Loschen",
+    "edit": "Bearbeiten",
+    "create": "Erstellen",
+    "loading": "Laden...",
+    "error": "Fehler",
+    "success": "Erfolg",
+    "backToHome": "Zuruck zur Startseite",
+    "viewAll": "Alle anzeigen",
+    "orContinueWith": "Oder fortfahren mit"
+  },
+  "landing": {
+    "nav": {
+      "features": "Funktionen",
+      "howItWorks": "So funktioniert's",
+      "pricing": "Preise",
+      "faq": "FAQ"
+    },
+    "hero": {
+      "badge": "KI-gestutzt - Ohne Anwalt - FTC-konform",
+      "title": "Vertrage",
+      "titleHighlight": "in 2 Minuten",
+      "titleEnd": "Ohne Anwalt.",
+      "subtitle": "Beschreiben Sie Ihren Deal - KI erstellt einen rechtssicheren Vertrag. Senden Sie zur E-Signatur direkt aus Ihrem Browser. Funktioniert fur YouTube, TikTok, Instagram und Twitch.",
+      "cta": "Vertrag kostenlos erstellen",
+      "ctaDemo": "Demo ansehen",
+      "freeplan": "Kostenloser Plan",
+      "noCard": "Keine Karte erforderlich",
+      "creators": "5.000+ Creator"
+    },
+    "trust": {
+      "title": "Verwendet von Content-Erstellern auf diesen Plattformen"
+    },
+    "features": {
+      "title": "Warum ContractGen?",
+      "subtitle": "Drei Grunde, warum 5.000+ Influencer uns gewahlt haben.",
+      "fast": {
+        "tag": "Schnell",
+        "title": "2 Minuten statt 2 Stunden",
+        "desc": "Beantworten Sie einige Fragen. KI erstellt einen vollstandigen Vertrag mit allen Klauseln - schneller als Kaffee kochen."
+      },
+      "protect": {
+        "tag": "Schutzt",
+        "title": "Rechtlicher Schutz ab Tag eins",
+        "desc": "Alle Vorlagen werden von Medienanwalten entwickelt. FTC-Anforderungen, Inhaltsrechte, Zahlungsbedingungen - alles inklusive."
+      },
+      "clear": {
+        "tag": "Klar",
+        "title": "Kein Juristendeutsch",
+        "desc": "Vertrage sind einfach und klar geschrieben. Die Marke versteht die Bedingungen - Deals werden schneller abgeschlossen."
+      }
+    },
+    "how": {
+      "title": "So funktioniert's",
+      "subtitle": "Drei Schritte - und Ihr Vertrag ist unterschriftsbereit.",
+      "step1": {
+        "num": "01",
+        "title": "Deal beschreiben",
+        "desc": "Details eingeben: Marke, Plattform, Inhalt, Zahlung. Dauert weniger als eine Minute."
+      },
+      "step2": {
+        "num": "02",
+        "title": "Vertrag erhalten",
+        "desc": "KI generiert ein vollstandiges Dokument mit allen Klauseln. Sie konnen es bearbeiten."
+      },
+      "step3": {
+        "num": "03",
+        "title": "Unterschreiben und abschliessen",
+        "desc": "Senden Sie einen Link an die Marke. E-Signatur im Browser - keine Downloads."
+      }
+    },
+    "templates": {
+      "title": "Fertige Vorlagen",
+      "subtitle": "Wahlen Sie was passt - und passen Sie an.",
+      "sponsored": "Gesponserter Beitrag",
+      "ugc": "UGC-Inhalt",
+      "ambassador": "Markenbotschafter",
+      "nda": "NDA",
+      "licensing": "Lizenzierung",
+      "review": "Produktbewertung",
+      "collab": "Zusammenarbeit",
+      "exclusivity": "Exklusivitat",
+      "popular": "Beliebt",
+      "new": "Neu",
+      "longterm": "Langfristig",
+      "basic": "Basic"
+    },
+    "testimonials": {
+      "title": "Was Creator sagen",
+      "t1": {
+        "text": "Fruher habe ich 2-3 Stunden fur jeden Vertrag mit einem Anwalt gebraucht. Jetzt mache ich es in 5 Minuten. Bereits 14 Deals uber ContractGen abgeschlossen.",
+        "name": "Alina K.",
+        "handle": "@alinacreates",
+        "platform": "YouTube - 480K"
+      },
+      "t2": {
+        "text": "Marken nehmen die Bedingungen jetzt ernster - ich sehe den Unterschied. Vertrage sehen professionell aus, und das verandert Verhandlungen.",
+        "name": "Max R.",
+        "handle": "@maxtech_",
+        "platform": "TikTok - 1.2M"
+      },
+      "t3": {
+        "text": "E-Signatur ist einfach magisch. Vertrage gingen fruher wochenlang in E-Mails verloren. Jetzt unterschreiben wir in 10 Minuten.",
+        "name": "Diana Y.",
+        "handle": "@dianabeauty",
+        "platform": "Instagram - 220K"
+      }
+    },
+    "faq": {
+      "title": "Haufig gestellte Fragen",
+      "q1": "Brauche ich einen Anwalt, um ContractGen zu nutzen?",
+      "a1": "Nein. Unsere Vorlagen werden von Anwalten entwickelt, die auf Medienrecht spezialisiert sind. Sie beantworten Fragen - KI erstellt automatisch den korrekten Vertrag.",
+      "q2": "Sind Vertrage rechtlich bindend?",
+      "a2": "Ja. Elektronische Unterschriften werden in den meisten Rechtsordnungen gemas E-Signatur-Gesetzen anerkannt. Vertrage enthalten alle notwendigen Klauseln zum Schutz beider Parteien.",
+      "q3": "Welche Vertragstypen sind verfugbar?",
+      "a3": "Gesponserte Beitrage, UGC-Inhalte, Botschaftervertrage, NDA, Inhaltslizenzierung, Zusammenarbeiten und mehr - uber 8 Vorlagen.",
+      "q4": "Kann ich den generierten Vertrag bearbeiten?",
+      "a4": "Naturlich. Nach der Generierung konnen Sie jeden Abschnitt bearbeiten, eigene Klauseln hinzufugen und die modifizierte Vorlage fur zukunftige Verwendung speichern.",
+      "q5": "Wie funktioniert die E-Signatur?",
+      "a5": "Sie senden einen Link an die Marke. Sie unterschreiben direkt im Browser - keine Downloads oder Registrierung. Sie erhalten eine Benachrichtigung in Echtzeit."
+    },
+    "pricing": {
+      "title": "Einfache Preise",
+      "subtitle": "Starten Sie kostenlos. Skalieren Sie bei Bedarf.",
+      "mostPopular": "Am beliebtesten",
+      "starter": {
+        "name": "Starter",
+        "price": "0 EUR",
+        "period": "fur immer",
+        "desc": "Risikofrei testen",
+        "f1": "3 Vertrage/Monat",
+        "f2": "Basis-Vorlagen",
+        "f3": "E-Mail-Support",
+        "cta": "Kostenlos starten"
+      },
+      "pro": {
+        "name": "Pro",
+        "price": "19 EUR",
+        "period": "/Monat",
+        "desc": "Fur aktive Influencer",
+        "f1": "Unbegrenzte Vertrage",
+        "f2": "Alle 8+ Vorlagen",
+        "f3": "E-Signaturen",
+        "f4": "KI-Klauselvorschlage",
+        "f5": "Prioritats-Support",
+        "cta": "Kostenlose Testversion starten"
+      },
+      "agency": {
+        "name": "Agentur",
+        "price": "79 EUR",
+        "period": "/Monat",
+        "desc": "Fur Teams und Agenturen",
+        "f1": "Alles in Pro",
+        "f2": "5 Teammitglieder",
+        "f3": "White-Label",
+        "f4": "API-Zugang",
+        "f5": "Personlicher Manager",
+        "cta": "Kontaktieren Sie uns"
+      }
+    },
+    "cta": {
+      "title": "Ihr erster Vertrag - jetzt sofort.",
+      "subtitle": "Schliessen Sie sich 5.000+ Influencern an, die Deals schnell und ohne Anwalte abschliessen.",
+      "button": "Vertrag kostenlos erstellen",
+      "note": "Keine Kreditkarte - 30 Tage Geld-zuruck-Garantie - Jederzeit kundbar"
+    },
+    "footer": {
+      "terms": "AGB",
+      "privacy": "Datenschutz"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Willkommen zuruck",
+      "subtitle": "Melden Sie sich bei Ihrem ContractGen-Konto an",
+      "email": "E-Mail",
+      "password": "Passwort",
+      "rememberMe": "Angemeldet bleiben",
+      "forgotPassword": "Passwort vergessen?",
+      "submit": "Anmelden",
+      "noAccount": "Noch kein Konto?",
+      "signupLink": "Kostenlos registrieren"
+    },
+    "signup": {
+      "title": "Konto erstellen",
+      "subtitle": "Erstellen Sie professionelle Vertrage in Minuten",
+      "name": "Vollstandiger Name",
+      "email": "E-Mail",
+      "password": "Passwort",
+      "passwordHint": "Mindestens 8 Zeichen",
+      "confirmPassword": "Passwort bestatigen",
+      "ageConfirm": "Mit der Registrierung bestatige ich, dass ich 18 Jahre oder alter bin und akzeptiere die",
+      "termsLink": "Nutzungsbedingungen",
+      "and": "und",
+      "privacyLink": "Datenschutzrichtlinie",
+      "dataConsent": "Ich stimme der Verarbeitung meiner personenbezogenen Daten gemas der",
+      "submit": "Konto erstellen",
+      "hasAccount": "Bereits ein Konto?",
+      "loginLink": "Anmelden"
+    },
+    "errors": {
+      "fillAllFields": "Bitte fullen Sie alle Felder aus",
+      "passwordLength": "Passwort muss mindestens 8 Zeichen haben",
+      "passwordMismatch": "Passworter stimmen nicht uberein",
+      "ageRequired": "Sie mussen bestatigen, dass Sie 18 Jahre oder alter sind",
+      "consentRequired": "Sie mussen der Verarbeitung personenbezogener Daten zustimmen",
+      "networkError": "Netzwerkfehler. Bitte versuchen Sie es erneut.",
+      "loginFailed": "Anmeldung fehlgeschlagen",
+      "signupFailed": "Registrierung fehlgeschlagen"
+    }
+  },
+  "dashboard": {
+    "welcome": "Willkommen zuruck",
+    "subtitle": "Das passiert mit Ihren Vertragen",
+    "newContract": "Neuer Vertrag",
+    "stats": {
+      "totalContracts": "Gesamt Vertrage",
+      "pending": "Ausstehend",
+      "signed": "Unterschrieben",
+      "revenue": "Umsatz",
+      "expiring": "laufen ab",
+      "deals": "Deals"
+    },
+    "recentContracts": "Aktuelle Vertrage",
+    "contractActivity": "Vertragsaktivitat",
+    "created": "Erstellt",
+    "quickActions": "Schnellaktionen",
+    "aiPowered": "KI-generiert",
+    "browseTemplates": "Vorlagen durchsuchen",
+    "templatesCount": "8+ einsatzbereit",
+    "importContract": "Vertrag importieren",
+    "uploadPdf": "Vorhandenes PDF hochladen",
+    "popularTemplates": "Beliebte Vorlagen",
+    "starterPlan": "Starter-Plan",
+    "contractsUsed": "{used} von {total} Vertragen diesen Monat genutzt",
+    "upgradePlan": "Plan upgraden",
+    "status": {
+      "draft": "Entwurf",
+      "pending": "Ausstehend",
+      "signed": "Unterschrieben",
+      "expired": "Abgelaufen"
+    }
+  },
+  "contracts": {
+    "new": {
+      "title": "Neuen Vertrag erstellen",
+      "step1": "Vorlage wahlen",
+      "step2": "Vertragsdetails",
+      "step3": "Prufen & Senden",
+      "brandName": "Markenname",
+      "influencerName": "Influencer-Name",
+      "compensation": "Vergutung",
+      "deliverables": "Leistungen",
+      "deadline": "Inhaltsfrist",
+      "aiDisclaimer": "Vertrage werden von KI generiert und stellen keine Rechtsberatung dar. Wir empfehlen die Uberprufung durch einen qualifizierten Anwalt vor der Unterzeichnung."
+    },
+    "sign": {
+      "title": "Vertrag unterschreiben",
+      "drawSignature": "Unterschrift zeichnen",
+      "typeSignature": "Unterschrift eingeben",
+      "clear": "Loschen",
+      "confirm": "Unterschrift bestatigen",
+      "signed": "Vertrag erfolgreich unterschrieben"
+    }
+  },
+  "pricing": {
+    "title": "Plan upgraden",
+    "subtitle": "Wahlen Sie den richtigen Plan fur Sie",
+    "currentPlan": "Aktueller Plan",
+    "upgrade": "Upgraden",
+    "features": {
+      "contracts": "Vertrage/Monat",
+      "unlimited": "Unbegrenzte Vertrage",
+      "templates": "Alle Vorlagen",
+      "esignatures": "E-Signaturen inklusive",
+      "ai": "KI-Klauselvorschlage",
+      "support": "Prioritats-Support",
+      "team": "Teammitglieder",
+      "api": "API-Zugang",
+      "whitelabel": "White-Label-Vertrage"
+    }
+  },
+  "legal": {
+    "terms": "Nutzungsbedingungen",
+    "privacy": "Datenschutzrichtlinie",
+    "cookies": "Cookie-Richtlinie"
+  },
+  "cookie": {
+    "banner": "Wir verwenden Cookies, um Ihre Erfahrung zu verbessern",
+    "acceptAll": "Alle akzeptieren",
+    "necessaryOnly": "Nur notwendige",
+    "settings": "Einstellungen",
+    "necessary": "Notwendig",
+    "analytics": "Analytik",
+    "marketing": "Marketing"
+  },
+  "language": {
+    "en": "Englisch",
+    "ru": "Russisch",
+    "es": "Spanisch",
+    "de": "Deutsch",
+    "fr": "Franzosisch",
+    "zh": "Chinesisch",
+    "ja": "Japanisch",
+    "ko": "Koreanisch",
+    "pt": "Portugiesisch",
+    "ar": "Arabisch"
+  }
+}

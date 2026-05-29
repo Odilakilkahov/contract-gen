@@ -1,0 +1,315 @@
+{
+  "common": {
+    "login": "ログイン",
+    "signup": "新規登録",
+    "logout": "ログアウト",
+    "save": "保存",
+    "cancel": "キャンセル",
+    "delete": "削除",
+    "edit": "編集",
+    "create": "作成",
+    "loading": "読み込み中...",
+    "error": "エラー",
+    "success": "成功",
+    "backToHome": "ホームに戻る",
+    "viewAll": "すべて表示",
+    "orContinueWith": "または次で続行"
+  },
+  "landing": {
+    "nav": {
+      "features": "機能",
+      "howItWorks": "使い方",
+      "pricing": "料金",
+      "faq": "よくある質問"
+    },
+    "hero": {
+      "badge": "AI搭載 - 弁護士不要 - FTC準拠",
+      "title": "契約書",
+      "titleHighlight": "2分で作成",
+      "titleEnd": "弁護士不要。",
+      "subtitle": "取引を説明するだけ - AIが法的に有効な契約書を作成。ブラウザから直接電子署名を送信。YouTube、TikTok、Instagram、Twitchに対応。",
+      "cta": "無料で契約書を作成",
+      "ctaDemo": "デモを見る",
+      "freeplan": "無料プラン",
+      "noCard": "クレジットカード不要",
+      "creators": "5,000+クリエイター"
+    },
+    "trust": {
+      "title": "これらのプラットフォームのコンテンツクリエイターが利用中"
+    },
+    "features": {
+      "title": "なぜContractGen？",
+      "subtitle": "5,000+のインフルエンサーが選んだ3つの理由。",
+      "fast": {
+        "tag": "高速",
+        "title": "2時間ではなく2分",
+        "desc": "いくつかの質問に答えるだけ。AIがすべての条項を含む完全な契約書を作成 - コーヒーを入れるより速い。"
+      },
+      "protect": {
+        "tag": "保護",
+        "title": "初日から法的保護",
+        "desc": "すべてのテンプレートはメディア弁護士が作成。FTC要件、コンテンツ権利、支払条件 - すべて含まれています。"
+      },
+      "clear": {
+        "tag": "明確",
+        "title": "法律用語なし",
+        "desc": "契約書はシンプルで明確に書かれています。ブランドは条件を理解 - 取引がより早く完了。"
+      }
+    },
+    "how": {
+      "title": "使い方",
+      "subtitle": "3ステップ - 契約書が署名可能に。",
+      "step1": {
+        "num": "01",
+        "title": "取引を説明",
+        "desc": "詳細を入力：ブランド、プラットフォーム、コンテンツ、支払い。1分もかかりません。"
+      },
+      "step2": {
+        "num": "02",
+        "title": "契約書を取得",
+        "desc": "AIがすべての条項を含む完全なドキュメントを生成。編集可能。"
+      },
+      "step3": {
+        "num": "03",
+        "title": "署名して完了",
+        "desc": "ブランドにリンクを送信。ブラウザで電子署名 - ダウンロード不要。"
+      }
+    },
+    "templates": {
+      "title": "すぐ使えるテンプレート",
+      "subtitle": "適切なものを選んで - カスタマイズ。",
+      "sponsored": "スポンサー投稿",
+      "ugc": "UGCコンテンツ",
+      "ambassador": "ブランドアンバサダー",
+      "nda": "秘密保持契約",
+      "licensing": "ライセンス",
+      "review": "製品レビュー",
+      "collab": "コラボレーション",
+      "exclusivity": "独占契約",
+      "popular": "人気",
+      "new": "新規",
+      "longterm": "長期",
+      "basic": "基本"
+    },
+    "testimonials": {
+      "title": "クリエイターの声",
+      "t1": {
+        "text": "以前は弁護士と各契約に2-3時間かかっていました。今は5分で完了。ContractGenで既に14件の取引を完了。",
+        "name": "Alina K.",
+        "handle": "@alinacreates",
+        "platform": "YouTube - 480K"
+      },
+      "t2": {
+        "text": "ブランドが条件をより真剣に受け止めるようになりました - 違いを感じます。契約書がプロフェッショナルに見え、交渉が変わりました。",
+        "name": "Max R.",
+        "handle": "@maxtech_",
+        "platform": "TikTok - 1.2M"
+      },
+      "t3": {
+        "text": "電子署名は魔法のよう。以前は契約書がメールで何週間も迷子に。今は10分で署名完了。",
+        "name": "Diana Y.",
+        "handle": "@dianabeauty",
+        "platform": "Instagram - 220K"
+      }
+    },
+    "faq": {
+      "title": "よくある質問",
+      "q1": "ContractGenを使うのに弁護士は必要ですか？",
+      "a1": "いいえ。テンプレートはメディア法専門の弁護士が作成。質問に答えれば、AIが自動的に正しい契約書を作成します。",
+      "q2": "契約書は法的拘束力がありますか？",
+      "a2": "はい。電子署名は電子署名法に基づき、ほとんどの法域で認められています。契約書には両当事者を保護するために必要なすべての条項が含まれています。",
+      "q3": "どのような種類の契約書がありますか？",
+      "a3": "スポンサー投稿、UGCコンテンツ、アンバサダー、秘密保持契約、コンテンツライセンス、コラボレーションなど - 8つ以上のテンプレート。",
+      "q4": "生成された契約書を編集できますか？",
+      "a4": "もちろん。生成後、任意のセクションを編集し、独自の条項を追加し、変更したテンプレートを将来の使用のために保存できます。",
+      "q5": "電子署名はどのように機能しますか？",
+      "a5": "ブランドにリンクを送信。ブラウザで直接署名 - ダウンロードや登録は不要。リアルタイムで通知を受け取ります。"
+    },
+    "pricing": {
+      "title": "シンプルな料金",
+      "subtitle": "無料で始めて。必要な時にスケール。",
+      "mostPopular": "最も人気",
+      "starter": {
+        "name": "スターター",
+        "price": "無料",
+        "period": "永久",
+        "desc": "リスクなしで試す",
+        "f1": "月3件の契約",
+        "f2": "基本テンプレート",
+        "f3": "メールサポート",
+        "cta": "無料で始める"
+      },
+      "pro": {
+        "name": "プロ",
+        "price": "$19",
+        "period": "/月",
+        "desc": "アクティブなインフルエンサー向け",
+        "f1": "無制限の契約",
+        "f2": "全8+テンプレート",
+        "f3": "電子署名",
+        "f4": "AI条項提案",
+        "f5": "優先サポート",
+        "cta": "無料トライアルを開始"
+      },
+      "agency": {
+        "name": "エージェンシー",
+        "price": "$79",
+        "period": "/月",
+        "desc": "チームとエージェンシー向け",
+        "f1": "プロの全機能",
+        "f2": "5人のチームメンバー",
+        "f3": "ホワイトラベル",
+        "f4": "APIアクセス",
+        "f5": "専任マネージャー",
+        "cta": "お問い合わせ"
+      }
+    },
+    "cta": {
+      "title": "最初の契約書 - 今すぐ。",
+      "subtitle": "弁護士なしで素早く取引を完了する5,000+のインフルエンサーに参加。",
+      "button": "無料で契約書を作成",
+      "note": "クレジットカード不要 - 30日間返金保証 - いつでもキャンセル"
+    },
+    "footer": {
+      "terms": "利用規約",
+      "privacy": "プライバシー"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "おかえりなさい",
+      "subtitle": "ContractGenアカウントにログイン",
+      "email": "メールアドレス",
+      "password": "パスワード",
+      "rememberMe": "ログイン状態を保持",
+      "forgotPassword": "パスワードをお忘れですか？",
+      "submit": "ログイン",
+      "noAccount": "アカウントをお持ちでないですか？",
+      "signupLink": "無料で登録"
+    },
+    "signup": {
+      "title": "アカウントを作成",
+      "subtitle": "数分でプロフェッショナルな契約書の作成を開始",
+      "name": "氏名",
+      "email": "メールアドレス",
+      "password": "パスワード",
+      "passwordHint": "8文字以上",
+      "confirmPassword": "パスワードを確認",
+      "ageConfirm": "登録することで、18歳以上であることを確認し、",
+      "termsLink": "利用規約",
+      "and": "と",
+      "privacyLink": "プライバシーポリシー",
+      "dataConsent": "以下に従って個人データの処理に同意します",
+      "submit": "アカウントを作成",
+      "hasAccount": "既にアカウントをお持ちですか？",
+      "loginLink": "ログイン"
+    },
+    "errors": {
+      "fillAllFields": "すべてのフィールドを入力してください",
+      "passwordLength": "パスワードは8文字以上必要です",
+      "passwordMismatch": "パスワードが一致しません",
+      "ageRequired": "18歳以上であることを確認する必要があります",
+      "consentRequired": "個人データ処理に同意する必要があります",
+      "networkError": "ネットワークエラー。もう一度お試しください。",
+      "loginFailed": "ログインに失敗しました",
+      "signupFailed": "登録に失敗しました"
+    }
+  },
+  "dashboard": {
+    "welcome": "おかえりなさい",
+    "subtitle": "契約書の最新状況はこちら",
+    "newContract": "新規契約",
+    "stats": {
+      "totalContracts": "契約総数",
+      "pending": "保留中",
+      "signed": "署名済み",
+      "revenue": "収益",
+      "expiring": "期限間近",
+      "deals": "件の取引"
+    },
+    "recentContracts": "最近の契約",
+    "contractActivity": "契約活動",
+    "created": "作成済み",
+    "quickActions": "クイックアクション",
+    "aiPowered": "AI生成",
+    "browseTemplates": "テンプレートを閲覧",
+    "templatesCount": "8+すぐに使用可能",
+    "importContract": "契約をインポート",
+    "uploadPdf": "既存のPDFをアップロード",
+    "popularTemplates": "人気のテンプレート",
+    "starterPlan": "スタータープラン",
+    "contractsUsed": "今月{used}/{total}件の契約を使用",
+    "upgradePlan": "プランをアップグレード",
+    "status": {
+      "draft": "下書き",
+      "pending": "保留中",
+      "signed": "署名済み",
+      "expired": "期限切れ"
+    }
+  },
+  "contracts": {
+    "new": {
+      "title": "新規契約を作成",
+      "step1": "テンプレートを選択",
+      "step2": "契約詳細",
+      "step3": "確認して送信",
+      "brandName": "ブランド名",
+      "influencerName": "インフルエンサー名",
+      "compensation": "報酬",
+      "deliverables": "成果物",
+      "deadline": "コンテンツ締め切り",
+      "aiDisclaimer": "契約書はAIによって生成され、法的助言ではありません。署名前に資格のある弁護士によるレビューをお勧めします。"
+    },
+    "sign": {
+      "title": "契約に署名",
+      "drawSignature": "署名を描く",
+      "typeSignature": "署名を入力",
+      "clear": "クリア",
+      "confirm": "署名を確認",
+      "signed": "契約書に正常に署名しました"
+    }
+  },
+  "pricing": {
+    "title": "プランをアップグレード",
+    "subtitle": "あなたに合ったプランを選択",
+    "currentPlan": "現在のプラン",
+    "upgrade": "アップグレード",
+    "features": {
+      "contracts": "件の契約/月",
+      "unlimited": "無制限の契約",
+      "templates": "全テンプレート",
+      "esignatures": "電子署名込み",
+      "ai": "AI条項提案",
+      "support": "優先サポート",
+      "team": "チームメンバー",
+      "api": "APIアクセス",
+      "whitelabel": "ホワイトラベル契約"
+    }
+  },
+  "legal": {
+    "terms": "利用規約",
+    "privacy": "プライバシーポリシー",
+    "cookies": "Cookieポリシー"
+  },
+  "cookie": {
+    "banner": "体験を向上させるためにCookieを使用しています",
+    "acceptAll": "すべて受け入れる",
+    "necessaryOnly": "必要なもののみ",
+    "settings": "設定",
+    "necessary": "必要",
+    "analytics": "分析",
+    "marketing": "マーケティング"
+  },
+  "language": {
+    "en": "英語",
+    "ru": "ロシア語",
+    "es": "スペイン語",
+    "de": "ドイツ語",
+    "fr": "フランス語",
+    "zh": "中国語",
+    "ja": "日本語",
+    "ko": "韓国語",
+    "pt": "ポルトガル語",
+    "ar": "アラビア語"
+  }
+}

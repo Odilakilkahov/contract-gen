@@ -1,0 +1,45 @@
+{
+  "name": "ContractGen",
+  "short_name": "ContractGen",
+  "description": "AI-powered influencer contract generator",
+  "start_url": "/dashboard",
+  "display": "standalone",
+  "background_color": "#09090b",
+  "theme_color": "#8b5cf6",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "productivity"],
+  "screenshots": [
+    {
+      "src": "/screenshot-dashboard.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "label": "Dashboard overview"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "New Contract",
+      "url": "/dashboard/contracts/new",
+      "icons": [{ "src": "/icon-contract.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Deals",
+      "url": "/dashboard/deals",
+      "icons": [{ "src": "/icon-deals.png", "sizes": "96x96" }]
+    }
+  ]
+}

@@ -1,0 +1,315 @@
+{
+  "common": {
+    "login": "Iniciar sesion",
+    "signup": "Registrarse",
+    "logout": "Cerrar sesion",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "create": "Crear",
+    "loading": "Cargando...",
+    "error": "Error",
+    "success": "Exito",
+    "backToHome": "Volver al inicio",
+    "viewAll": "Ver todo",
+    "orContinueWith": "O continuar con"
+  },
+  "landing": {
+    "nav": {
+      "features": "Caracteristicas",
+      "howItWorks": "Como funciona",
+      "pricing": "Precios",
+      "faq": "FAQ"
+    },
+    "hero": {
+      "badge": "Impulsado por IA - Sin abogado - Compatible con FTC",
+      "title": "Contratos",
+      "titleHighlight": "en 2 minutos",
+      "titleEnd": "Sin abogado.",
+      "subtitle": "Describe tu acuerdo - la IA crea un contrato legalmente solido. Envia para firma electronica directamente desde tu navegador. Funciona para YouTube, TikTok, Instagram y Twitch.",
+      "cta": "Crear contrato gratis",
+      "ctaDemo": "Ver demo",
+      "freeplan": "Plan gratuito",
+      "noCard": "Sin tarjeta",
+      "creators": "5,000+ creadores"
+    },
+    "trust": {
+      "title": "Usado por creadores de contenido en estas plataformas"
+    },
+    "features": {
+      "title": "Por que ContractGen?",
+      "subtitle": "Tres razones por las que 5,000+ influencers nos eligieron.",
+      "fast": {
+        "tag": "Rapido",
+        "title": "2 minutos en lugar de 2 horas",
+        "desc": "Responde algunas preguntas. La IA ensambla un contrato completo con todas las clausulas - mas rapido que hacer cafe."
+      },
+      "protect": {
+        "tag": "Protege",
+        "title": "Proteccion legal desde el primer dia",
+        "desc": "Todas las plantillas estan desarrolladas por abogados de medios. Requisitos de FTC, derechos de contenido, terminos de pago - todo incluido."
+      },
+      "clear": {
+        "tag": "Claro",
+        "title": "Sin jerga legal",
+        "desc": "Los contratos estan escritos de forma simple y clara. La marca entiende los terminos - los acuerdos se cierran mas rapido."
+      }
+    },
+    "how": {
+      "title": "Como funciona",
+      "subtitle": "Tres pasos - y tu contrato esta listo para firmar.",
+      "step1": {
+        "num": "01",
+        "title": "Describe el acuerdo",
+        "desc": "Ingresa los detalles: marca, plataforma, contenido, pago. Toma menos de un minuto."
+      },
+      "step2": {
+        "num": "02",
+        "title": "Obtiene tu contrato",
+        "desc": "La IA genera un documento completo con todas las clausulas. Puedes editarlo."
+      },
+      "step3": {
+        "num": "03",
+        "title": "Firma y cierra",
+        "desc": "Envia un enlace a la marca. Firma electronica en el navegador - sin descargas."
+      }
+    },
+    "templates": {
+      "title": "Plantillas listas",
+      "subtitle": "Elige lo que te convenga - y personaliza.",
+      "sponsored": "Post Patrocinado",
+      "ugc": "Contenido UGC",
+      "ambassador": "Embajador de Marca",
+      "nda": "NDA",
+      "licensing": "Licenciamiento",
+      "review": "Resena de Producto",
+      "collab": "Colaboracion",
+      "exclusivity": "Exclusividad",
+      "popular": "Popular",
+      "new": "Nuevo",
+      "longterm": "Largo plazo",
+      "basic": "Basico"
+    },
+    "testimonials": {
+      "title": "Lo que dicen los creadores",
+      "t1": {
+        "text": "Solia pasar 2-3 horas en cada contrato con un abogado. Ahora lo hago en 5 minutos. Ya cerre 14 acuerdos a traves de ContractGen.",
+        "name": "Alina K.",
+        "handle": "@alinacreates",
+        "platform": "YouTube - 480K"
+      },
+      "t2": {
+        "text": "Las marcas empezaron a tomar los terminos mas en serio - veo la diferencia. Los contratos se ven profesionales, y eso cambia las negociaciones.",
+        "name": "Max R.",
+        "handle": "@maxtech_",
+        "platform": "TikTok - 1.2M"
+      },
+      "t3": {
+        "text": "La firma electronica es simplemente magica. Los contratos solian perderse en el correo por semanas. Ahora firmamos en 10 minutos.",
+        "name": "Diana Y.",
+        "handle": "@dianabeauty",
+        "platform": "Instagram - 220K"
+      }
+    },
+    "faq": {
+      "title": "Preguntas frecuentes",
+      "q1": "Necesito un abogado para usar ContractGen?",
+      "a1": "No. Nuestras plantillas estan desarrolladas por abogados especializados en derecho de medios. Respondes preguntas - la IA ensambla el contrato correcto automaticamente.",
+      "q2": "Los contratos son legalmente vinculantes?",
+      "a2": "Si. Las firmas electronicas son reconocidas en la mayoria de las jurisdicciones bajo las leyes de firma electronica. Los contratos contienen todas las clausulas necesarias para proteger a ambas partes.",
+      "q3": "Que tipos de contratos estan disponibles?",
+      "a3": "Posts patrocinados, contenido UGC, embajadas, NDA, licenciamiento de contenido, colaboraciones y mas - mas de 8 plantillas.",
+      "q4": "Puedo editar el contrato generado?",
+      "a4": "Por supuesto. Despues de la generacion, puedes editar cualquier seccion, agregar tus propias clausulas y guardar la plantilla modificada para uso futuro.",
+      "q5": "Como funciona la firma electronica?",
+      "a5": "Envias un enlace a la marca. Firman directamente en el navegador - sin descargas ni registro. Recibes una notificacion en tiempo real."
+    },
+    "pricing": {
+      "title": "Precios simples",
+      "subtitle": "Empieza gratis. Escala cuando lo necesites.",
+      "mostPopular": "Mas popular",
+      "starter": {
+        "name": "Inicial",
+        "price": "$0",
+        "period": "siempre",
+        "desc": "Prueba sin riesgo",
+        "f1": "3 contratos/mes",
+        "f2": "Plantillas basicas",
+        "f3": "Soporte por email",
+        "cta": "Empezar gratis"
+      },
+      "pro": {
+        "name": "Pro",
+        "price": "$19",
+        "period": "/mes",
+        "desc": "Para influencers activos",
+        "f1": "Contratos ilimitados",
+        "f2": "Todas las 8+ plantillas",
+        "f3": "Firmas electronicas",
+        "f4": "Sugerencias de clausulas IA",
+        "f5": "Soporte prioritario",
+        "cta": "Iniciar prueba gratuita"
+      },
+      "agency": {
+        "name": "Agencia",
+        "price": "$79",
+        "period": "/mes",
+        "desc": "Para equipos y agencias",
+        "f1": "Todo en Pro",
+        "f2": "5 miembros del equipo",
+        "f3": "White-label",
+        "f4": "Acceso API",
+        "f5": "Gerente personal",
+        "cta": "Contactanos"
+      }
+    },
+    "cta": {
+      "title": "Tu primer contrato - ahora mismo.",
+      "subtitle": "Unete a 5,000+ influencers que cierran acuerdos rapido y sin abogados.",
+      "button": "Crear contrato gratis",
+      "note": "Sin tarjeta de credito - Garantia de devolucion de 30 dias - Cancela en cualquier momento"
+    },
+    "footer": {
+      "terms": "Terminos",
+      "privacy": "Privacidad"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Bienvenido de nuevo",
+      "subtitle": "Inicia sesion en tu cuenta ContractGen",
+      "email": "Email",
+      "password": "Contrasena",
+      "rememberMe": "Recuerdame",
+      "forgotPassword": "Olvidaste tu contrasena?",
+      "submit": "Iniciar sesion",
+      "noAccount": "No tienes cuenta?",
+      "signupLink": "Registrate gratis"
+    },
+    "signup": {
+      "title": "Crea tu cuenta",
+      "subtitle": "Empieza a crear contratos profesionales en minutos",
+      "name": "Nombre completo",
+      "email": "Email",
+      "password": "Contrasena",
+      "passwordHint": "Minimo 8 caracteres",
+      "confirmPassword": "Confirmar contrasena",
+      "ageConfirm": "Al registrarme, confirmo que tengo 18 anos o mas y acepto los",
+      "termsLink": "Terminos de servicio",
+      "and": "y",
+      "privacyLink": "Politica de privacidad",
+      "dataConsent": "Doy mi consentimiento para el procesamiento de mis datos personales de acuerdo con la",
+      "submit": "Crear cuenta",
+      "hasAccount": "Ya tienes cuenta?",
+      "loginLink": "Iniciar sesion"
+    },
+    "errors": {
+      "fillAllFields": "Por favor completa todos los campos",
+      "passwordLength": "La contrasena debe tener al menos 8 caracteres",
+      "passwordMismatch": "Las contrasenas no coinciden",
+      "ageRequired": "Debes confirmar que tienes 18 anos o mas",
+      "consentRequired": "Debes dar tu consentimiento para el procesamiento de datos personales",
+      "networkError": "Error de red. Por favor intenta de nuevo.",
+      "loginFailed": "Error al iniciar sesion",
+      "signupFailed": "Error al registrarse"
+    }
+  },
+  "dashboard": {
+    "welcome": "Bienvenido de nuevo",
+    "subtitle": "Esto es lo que esta pasando con tus contratos",
+    "newContract": "Nuevo contrato",
+    "stats": {
+      "totalContracts": "Total de contratos",
+      "pending": "Pendientes",
+      "signed": "Firmados",
+      "revenue": "Ingresos",
+      "expiring": "por vencer",
+      "deals": "acuerdos"
+    },
+    "recentContracts": "Contratos recientes",
+    "contractActivity": "Actividad de contratos",
+    "created": "Creados",
+    "quickActions": "Acciones rapidas",
+    "aiPowered": "Generacion con IA",
+    "browseTemplates": "Ver plantillas",
+    "templatesCount": "8+ listas para usar",
+    "importContract": "Importar contrato",
+    "uploadPdf": "Subir PDF existente",
+    "popularTemplates": "Plantillas populares",
+    "starterPlan": "Plan inicial",
+    "contractsUsed": "{used} de {total} contratos usados este mes",
+    "upgradePlan": "Mejorar plan",
+    "status": {
+      "draft": "Borrador",
+      "pending": "Pendiente",
+      "signed": "Firmado",
+      "expired": "Expirado"
+    }
+  },
+  "contracts": {
+    "new": {
+      "title": "Crear nuevo contrato",
+      "step1": "Elegir plantilla",
+      "step2": "Detalles del contrato",
+      "step3": "Revisar y enviar",
+      "brandName": "Nombre de la marca",
+      "influencerName": "Nombre del influencer",
+      "compensation": "Compensacion",
+      "deliverables": "Entregables",
+      "deadline": "Fecha limite del contenido",
+      "aiDisclaimer": "Los contratos son generados por IA y no constituyen asesoramiento legal. Recomendamos que un abogado calificado los revise antes de firmar."
+    },
+    "sign": {
+      "title": "Firmar contrato",
+      "drawSignature": "Dibujar firma",
+      "typeSignature": "Escribir firma",
+      "clear": "Limpiar",
+      "confirm": "Confirmar firma",
+      "signed": "Contrato firmado exitosamente"
+    }
+  },
+  "pricing": {
+    "title": "Mejora tu plan",
+    "subtitle": "Elige el plan adecuado para ti",
+    "currentPlan": "Plan actual",
+    "upgrade": "Mejorar",
+    "features": {
+      "contracts": "contratos/mes",
+      "unlimited": "Contratos ilimitados",
+      "templates": "Todas las plantillas",
+      "esignatures": "Firmas electronicas incluidas",
+      "ai": "Sugerencias de clausulas IA",
+      "support": "Soporte prioritario",
+      "team": "Miembros del equipo",
+      "api": "Acceso API",
+      "whitelabel": "Contratos white-label"
+    }
+  },
+  "legal": {
+    "terms": "Terminos de servicio",
+    "privacy": "Politica de privacidad",
+    "cookies": "Politica de cookies"
+  },
+  "cookie": {
+    "banner": "Usamos cookies para mejorar tu experiencia",
+    "acceptAll": "Aceptar todo",
+    "necessaryOnly": "Solo necesarias",
+    "settings": "Configuracion",
+    "necessary": "Necesarias",
+    "analytics": "Analiticas",
+    "marketing": "Marketing"
+  },
+  "language": {
+    "en": "Ingles",
+    "ru": "Ruso",
+    "es": "Espanol",
+    "de": "Aleman",
+    "fr": "Frances",
+    "zh": "Chino",
+    "ja": "Japones",
+    "ko": "Coreano",
+    "pt": "Portugues",
+    "ar": "Arabe"
+  }
+}

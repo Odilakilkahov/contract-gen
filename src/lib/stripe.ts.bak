@@ -1,0 +1,321 @@
+import type Stripe from "stripe"
+
+// Lazy initialization to avoid errors when Stripe isn't configured
+let stripeInstance: Stripe | null = null
+
+export async function getStripe(): Promise<Stripe> {
+  if (!stripeInstance) {
+    if (!process.env.STRIPE_SECRET_KEY) {
+      throw new Error("STRIPE_SECRET_KEY is not configured")
+    }
+    // Dynamic import to handle ESM/CJS compatibility
+    const StripeModule = (await import("stripe")).default
+    stripeInstance = new StripeModule(process.env.STRIPE_SECRET_KEY, {
+      apiVersion: "2026-05-27.dahlia",
+    })
+  }
+  return stripeInstance
+}
+
+export function isStripeConfigured(): boolean {
+  return Boolean(process.env.STRIPE_SECRET_KEY)
+}
+
+// Plan configuration
+export const PLANS = {
+  free: {
+    name: "Free",
+    price: 0,
+    priceId: null,
+    features: [
+      "3 contracts per month",
+      "Basic templates",
+      "Email support",
+    ],
+    limits: {
+      contracts_per_month: 3,
+      templates: 5,
+      team_members: 0,
+    },
+  },
+  creator: {
+    name: "Creator",
+    price: 19,
+    priceId: process.env.STRIPE_CREATOR_PRICE_ID,
+    features: [
+      "Unlimited contracts",
+      "All templates",
+      "E-signatures",
+      "Priority support",
+      "Deal tracking",
+    ],
+    limits: {
+      contracts_per_month: -1, // unlimited
+      templates: -1,
+      team_members: 0,
+    },
+  },
+  agency: {
+    name: "Agency",
+    price: 79,
+    priceId: process.env.STRIPE_AGENCY_PRICE_ID,
+    features: [
+      "Everything in Creator",
+      "Team collaboration",
+      "White-label branding",
+      "API access",
+      "Dedicated support",
+      "Custom integrations",
+    ],
+    limits: {
+      contracts_per_month: -1,
+      templates: -1,
+      team_members: 10,
+    },
+  },
+} as const
+
+export type PlanType = keyof typeof PLANS
+
+/**
+ * Create a Stripe customer
+ */
+export async function createStripeCustomer(
+  email: string,
+  name?: string,
+  metadata?: Record<string, string>
+): Promise<Stripe.Customer> {
+  const stripe = await getStripe()
+
+  return stripe.customers.create({
+    email,
+    name,
+    metadata,
+  })
+}
+
+/**
+ * Get or create Stripe customer for a user
+ */
+export async function getOrCreateCustomer(
+  email: string,
+  name?: string,
+  existingCustomerId?: string | null
+): Promise<Stripe.Customer> {
+  const stripe = await getStripe()
+
+  // If we have an existing customer ID, verify it exists
+  if (existingCustomerId) {
+    try {
+      const customer = await stripe.customers.retrieve(existingCustomerId)
+      if (!customer.deleted) {
+        return customer as Stripe.Customer
+      }
+    } catch {
+      // Customer doesn't exist, create new one
+    }
+  }
+
+  // Search for existing customer by email
+  const customers = await stripe.customers.list({
+    email,
+    limit: 1,
+  })
+
+  if (customers.data.length > 0) {
+    return customers.data[0]
+  }
+
+  // Create new customer
+  return createStripeCustomer(email, name)
+}
+
+/**
+ * Create a checkout session for subscription
+ */
+export async function createCheckoutSession(
+  customerId: string,
+  priceId: string,
+  plan: PlanType,
+  successUrl: string,
+  cancelUrl: string
+): Promise<Stripe.Checkout.Session> {
+  const stripe = await getStripe()
+
+  return stripe.checkout.sessions.create({
+    customer: customerId,
+    mode: "subscription",
+    payment_method_types: ["card"],
+    line_items: [
+      {
+        price: priceId,
+        quantity: 1,
+      },
+    ],
+    success_url: successUrl,
+    cancel_url: cancelUrl,
+    metadata: {
+      plan,
+    },
+    subscription_data: {
+      metadata: {
+        plan,
+      },
+    },
+  })
+}
+
+/**
+ * Create a billing portal session for subscription management
+ */
+export async function createPortalSession(
+  customerId: string,
+  returnUrl: string
+): Promise<Stripe.BillingPortal.Session> {
+  const stripe = await getStripe()
+
+  return stripe.billingPortal.sessions.create({
+    customer: customerId,
+    return_url: returnUrl,
+  })
+}
+
+/**
+ * Get customer's active subscriptions
+ */
+export async function getCustomerSubscriptions(
+  customerId: string
+): Promise<Stripe.Subscription[]> {
+  const stripe = await getStripe()
+
+  const subscriptions = await stripe.subscriptions.list({
+    customer: customerId,
+    status: "all",
+    limit: 10,
+  })
+
+  return subscriptions.data
+}
+
+/**
+ * Get active subscription for a customer
+ */
+export async function getActiveSubscription(
+  customerId: string
+): Promise<Stripe.Subscription | null> {
+  const subscriptions = await getCustomerSubscriptions(customerId)
+
+  return subscriptions.find(
+    (sub) => sub.status === "active" || sub.status === "trialing"
+  ) || null
+}
+
+/**
+ * Cancel a subscription
+ */
+export async function cancelSubscription(
+  subscriptionId: string,
+  cancelAtPeriodEnd = true
+): Promise<Stripe.Subscription> {
+  const stripe = await getStripe()
+
+  if (cancelAtPeriodEnd) {
+    // Cancel at end of billing period (graceful)
+    return stripe.subscriptions.update(subscriptionId, {
+      cancel_at_period_end: true,
+    })
+  } else {
+    // Cancel immediately
+    return stripe.subscriptions.cancel(subscriptionId)
+  }
+}
+
+/**
+ * Resume a canceled subscription (if cancel_at_period_end was true)
+ */
+export async function resumeSubscription(
+  subscriptionId: string
+): Promise<Stripe.Subscription> {
+  const stripe = await getStripe()
+
+  return stripe.subscriptions.update(subscriptionId, {
+    cancel_at_period_end: false,
+  })
+}
+
+/**
+ * Change subscription plan
+ */
+export async function changeSubscriptionPlan(
+  subscriptionId: string,
+  newPriceId: string
+): Promise<Stripe.Subscription> {
+  const stripe = await getStripe()
+
+  // Get current subscription
+  const subscription = await stripe.subscriptions.retrieve(subscriptionId)
+  const currentItemId = subscription.items.data[0].id
+
+  // Update to new price (prorates by default)
+  return stripe.subscriptions.update(subscriptionId, {
+    items: [
+      {
+        id: currentItemId,
+        price: newPriceId,
+      },
+    ],
+    proration_behavior: "create_prorations",
+  })
+}
+
+/**
+ * Get upcoming invoice for a subscription
+ */
+export async function getUpcomingInvoice(
+  customerId: string,
+  subscriptionId?: string
+): Promise<Stripe.Invoice | null> {
+  const stripe = await getStripe()
+
+  try {
+    return await stripe.invoices.createPreview({
+      customer: customerId,
+      subscription: subscriptionId,
+    })
+  } catch {
+    return null
+  }
+}
+
+/**
+ * Get customer's payment methods
+ */
+export async function getPaymentMethods(
+  customerId: string
+): Promise<Stripe.PaymentMethod[]> {
+  const stripe = await getStripe()
+
+  const paymentMethods = await stripe.paymentMethods.list({
+    customer: customerId,
+    type: "card",
+  })
+
+  return paymentMethods.data
+}
+
+/**
+ * Get customer's invoices
+ */
+export async function getInvoices(
+  customerId: string,
+  limit = 10
+): Promise<Stripe.Invoice[]> {
+  const stripe = await getStripe()
+
+  const invoices = await stripe.invoices.list({
+    customer: customerId,
+    limit,
+  })
+
+  return invoices.data
+}
