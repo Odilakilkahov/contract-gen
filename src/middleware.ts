@@ -1,22 +1,15 @@
 import { createServerClient } from '@supabase/ssr'
 import { NextResponse, type NextRequest } from 'next/server'
-import createIntlMiddleware from 'next-intl/middleware'
-import { routing } from './i18n/routing'
 
 const PROTECTED_ROUTES = ['/dashboard']
 const AUTH_ROUTES = ['/login', '/signup']
 
-// Create intl middleware
-const intlMiddleware = createIntlMiddleware(routing)
-
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
+  const response = NextResponse.next()
 
-  // First, handle i18n routing
-  const response = intlMiddleware(request)
-
-  // Get the pathname without locale prefix for auth checks
-  const pathnameWithoutLocale = pathname.replace(/^\/(en|ru|es|de|fr|zh|ja|ko|pt|ar)/, '') || '/'
+  // Skip i18n for now - direct routing
+  const pathnameWithoutLocale = pathname
 
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
   const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
@@ -32,16 +25,14 @@ export async function middleware(request: NextRequest) {
     // Protect dashboard routes
     if (PROTECTED_ROUTES.some(route => pathnameWithoutLocale.startsWith(route))) {
       if (!isAuthenticated) {
-        const locale = pathname.match(/^\/(en|ru|es|de|fr|zh|ja|ko|pt|ar)/)?.[1] || 'en'
-        return NextResponse.redirect(new URL(`/${locale}/login`, request.url))
+        return NextResponse.redirect(new URL('/login', request.url))
       }
     }
 
     // Redirect authenticated users away from auth pages
     if (AUTH_ROUTES.some(route => pathnameWithoutLocale.startsWith(route))) {
       if (isAuthenticated) {
-        const locale = pathname.match(/^\/(en|ru|es|de|fr|zh|ja|ko|pt|ar)/)?.[1] || 'en'
-        return NextResponse.redirect(new URL(`/${locale}/dashboard`, request.url))
+        return NextResponse.redirect(new URL('/dashboard', request.url))
       }
     }
 
@@ -72,16 +63,14 @@ export async function middleware(request: NextRequest) {
   // Protected routes - redirect to login if not authenticated
   if (PROTECTED_ROUTES.some(route => pathnameWithoutLocale.startsWith(route))) {
     if (!user) {
-      const locale = pathname.match(/^\/(en|ru|es|de|fr|zh|ja|ko|pt|ar)/)?.[1] || 'en'
-      return NextResponse.redirect(new URL(`/${locale}/login`, request.url))
+      return NextResponse.redirect(new URL('/login', request.url))
     }
   }
 
   // Auth routes - redirect to dashboard if already authenticated
   if (AUTH_ROUTES.some(route => pathnameWithoutLocale.startsWith(route))) {
     if (user) {
-      const locale = pathname.match(/^\/(en|ru|es|de|fr|zh|ja|ko|pt|ar)/)?.[1] || 'en'
-      return NextResponse.redirect(new URL(`/${locale}/dashboard`, request.url))
+      return NextResponse.redirect(new URL('/dashboard', request.url))
     }
   }
 
